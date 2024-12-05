@@ -1,0 +1,10 @@
+
+@apikey = D6T1KN96PMQL85BU
+
+
+
+@urls = https://www.alphavantage.co/query?function=NEWS_SENTIMENT&tickers=AAPL&apikey=D6T1KN96PMQL85BU
+
+
+
+GET {{urls}} HTTP/1.1

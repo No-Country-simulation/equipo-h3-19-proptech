@@ -1,3 +1,19 @@
+@import 'temp.css';
+
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  :root {
+    --background: hsl(0 0% 100%);
+    --foreground: hsl(240 10% 3.9%);
+
+    --our-white: #fff;
+    --our-green: #64B742;
+    --our-blue: #2980B9;
+    --our-darker-blue: #154C6C;
+    --our-red: #FC5130;
+  }
+}
