@@ -3,6 +3,7 @@ import FlipCard from "../../components/FlipCard/FlipCard";
 import Carousel from "../../components/carrouselNoticias/Carousel";
 import Acordion from "../../components/acordeonPreguntas/acordPre.jsx";
 import SendEmail from "../../components/sendContactoEmail/sendEmail.jsx";
+import Footer from "../../components/ui/footer.jsx";
 
 import { GrScorecard } from "react-icons/gr";
 import { MdOutlinePhoneCallback } from "react-icons/md";
@@ -13,13 +14,12 @@ import { GiCash } from "react-icons/gi";
 import { LuCalendarClock } from "react-icons/lu";
 
 
-import { FaLinkedin } from "react-icons/fa";
-import { FaFacebookSquare } from "react-icons/fa";
+
 
 
 export default function Home() {
   return (
-    <div className="w-full">
+    <div className="w-full font-sans">
       <Header />
       <div className="w-screen h-screen bg-background text-foreground">
         {/** 1 section */}
@@ -28,12 +28,12 @@ export default function Home() {
           <div className="w-1/2 w-full flex  justify-center">
             <div className="flex flex-col gap-14">
               <div className="flex flex-col gap-6 ">
-                <div className="text-5xl">
+                <div className="text-5xl font-serif font-bold">
                   <div>Invierte inteligentemente</div>
                   <div>Maximiza tus rendimientos</div>
                 </div>
                 <div>
-                  <div>Texto sobre invertir en inmuebles en America Latina</div>
+                  <div className="">Texto sobre invertir en inmuebles en America Latina</div>
                 </div>
                 <div className="border-b-4 w-40 border-colorFithy"></div>
               </div>
@@ -144,7 +144,7 @@ export default function Home() {
 
         {/** 2 section */}
         <div id="Beneficios" className="w-full flex flex-col pb-28 px-10 gap-10">
-          <div className="flex w-full justify-center text-4xl">Beneficios</div>
+          <div className="flex w-full justify-center text-4xl font-serif font-bold">Beneficios</div>
           <div className="w-full flex flex-col gap-10">
             <div className="flex justify-evenly">
               <FlipCard
@@ -164,23 +164,23 @@ export default function Home() {
             </div>
             <div className="flex flex justify-evenly">
               <FlipCard
-                title={"Transparencia"}
+                title={"Rentabilidad competitiva"}
                 description={
-                  "Docuemntacion verificada de cada prestario y garante. Descarga de documentacion de analisis y reportes"
+                  "Tasas de retorno superiores al promedio del mercado, optimizadas para maximizar tus ganancias."
                 }
                 icono={<GiSecurityGate />}
               />
               <FlipCard
-                title={"seguridad"}
+                title={"Diversificacion de portafolio"}
                 description={
-                  "Atencion en linea para resolver cualquier consulta o inquietud"
+                  "Oportunidades para invertir en diferentes tipos de proyectos con niveles de riesgo ajustados a tus objetivos financieros"
                 }
                 icono={<MdOutlineSecurity />}
               />
               <FlipCard
-                title={"soporte 24/7"}
+                title={"Transparencia"}
                 description={
-                  "Atencion en linea para resolver cualquier consulta o inquietud"
+                  "Documentación verificada de cada prestatario y garante. Descarga de documentación de análisis y reportes"
                 }
                 icono={<MdOutlinePhoneCallback />}
               />
@@ -217,7 +217,7 @@ export default function Home() {
 
         {/** 5 section  */}
         <div className="w-full  flex flex-col pb-28 px-10 gap-20 ">
-          <div className="flex w-full justify-center text-4xl">
+          <div className="flex w-full justify-center text-4xl font-serif font-bold">
             Operamos en toda America Latina
           </div>
           <div className="w-full flex flex-col gap-10 items-center">
@@ -289,7 +289,7 @@ export default function Home() {
         <div  id="Preguntas" className="w-full  flex  justify-center pb-28 px-10 gap-20 ">
           
           <div className="w-4/5 flex flex-col gap-10 items-center">
-            <div className="flex w-full text-4xl">
+            <div className="flex w-full text-4xl font-serif font-bold">
                 Preguntas Frecuentes
             </div>
             <div className="flex flex-col gap-20 w-full">
@@ -300,7 +300,7 @@ export default function Home() {
 
         {/** 7 section  */}
         <div id="Contacto" className="w-full bg-colorSecondary text-colorPrimary py-14 flex flex-col pb-28 px-10 gap-5">
-          <div className="flex w-full justify-center text-4xl">Contacto</div>
+          <div className="flex w-full justify-center text-4xl font-serif font-bold">Contacto</div>
 
           <div className="w-full flex flex-col gap-10 items-center">
             <div className="flex w-full justify-center text-xl">
@@ -315,30 +315,12 @@ export default function Home() {
 
         </div>
 
-
-
-
         {/** 8 section  */}
-        <div className="w-full  flex flex-col pb-28 px-10 gap-20 bg-colorSecondary">
+        <div className="w-full  flex flex-col  px-10 gap-20 bg-colorSecondary">
           <div className="w-full text-lg text-colorPrimary flex flex-col gap-6">
-
-            <div className="flex w-full text-3xl font-bold">Informacion de contacto</div>
-            <div className="flex-col flex gap-2 text-xl">
-              <div>+57 3120 000 000</div>
-              <div>ejemplo@gmail.com</div>
-              <div className="flex text-5xl gap-2 pt-4 ">
-              <FaLinkedin />
-              <FaFacebookSquare />
-            </div>
-
-            </div>
-            
-            
+              <Footer />
           </div>
-          
         </div>
-
-
 
 
       </div>

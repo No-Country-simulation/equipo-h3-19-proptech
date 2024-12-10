@@ -28,6 +28,10 @@ export default {
 
       },
     },
+    fontFamily: {
+      sans: ['Roboto'], // Ejemplo con Roboto
+      serif: ['serif']       // Ejemplo con Merriweather
+    },
   },
   plugins: [],
 };

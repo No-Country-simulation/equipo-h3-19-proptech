@@ -1,15 +1,13 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useActionState, useEffect, useState } from "react";
+import React,{  useState } from "react";
  import { useFormStatus } from "react-dom";
 
-import { signin } from "../../lib/auth";
+import {signin} from "../../services/auth.js"
 
 import { useDispatch } from "react-redux";
-import { setUser } from "../../redux/slices/userSlices";
+import { login } from "../../redux/slices/userSlices";
 
 import { Link } from 'react-router-dom';
-
-
 import image1 from "../../assets/imagenLogin.jpg";
 import Logo from "../../assets/Logo.png";
 import Navbar from "../ui/Navbar";
@@ -17,30 +15,50 @@ import { IoEyeSharp } from "react-icons/io5";
 
 
 
+
 export default function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
 
   const dispatch = useDispatch();
- const [state, action] = useActionState(signin, undefined);
+  //const [state, action] = useActionState(signin, undefined);
   const { pending } = useFormStatus();
 
-  useEffect(() => {
-    if (state && state.data) {
-      dispatch(setUser(state.data));
+
+
+  const handleSubmit = async(e)=>{
+    e.preventDefault(); // Evita la recarga de la página
+    if (!email || !password) {
+      setErrors({ message: "Todos los campos son obligatorios" });
+      return;
     }
-  }, [state]);
+
+    try {
+      const response = await signin({ email, password });
+      if (response && response._id && response.email) {
+        const {email, _id, token}= response;
+        dispatch( login({_id, email, token}))
+   
+        // dispatch(setUser(response.data)); // Actualiza el estado global si es necesario
+      }
+    } catch (error) {
+      console.error("Error al iniciar sesión:", error);
+    }
+  }
+
 
   const togglePasswordVisibility = () => {
-    event.preventDefault(); // Evita la recarga de la página
+   // event.preventDefault(); // Evita la recarga de la página
     setShowPassword(!showPassword);
   };
 
 
 
 
-  return (
 
+  return (
     <div 
       style={{ backgroundImage: `url(${image1})` }}
       className="bg-cover bg-center px-6 md:px-0  flex justify-center content-center  h-screen flex-wrap ">
@@ -62,7 +80,7 @@ export default function Login() {
           </div>
           </div>
 
-        <form action={action} className="w-2/3 flex flex-col gap-4 ">
+        <form onSubmit={handleSubmit} className="w-2/3 flex flex-col gap-4 ">
 
           <div className="py-4 flex flex-col gap-3">
             <div className="flex flex-col text-xl gap-2 ">
@@ -73,9 +91,11 @@ export default function Login() {
                 name="email"
                 type="email"
                 placeholder="Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
             </div>
-            {state?.errors?.email && <p>* {state.errors.email}</p>}
+            {/*state?.errors?.email && <p>* {state.errors.email}</p>*/}
 
             <div className="flex flex-col text-xl gap-3">
               <label htmlFor="password" style={{ textShadow: '2px 2px 5px rgba(0, 0, 0, 0.5)' }}>Contraseña</label>
@@ -86,6 +106,8 @@ export default function Login() {
                 name="password"
                 placeholder="ingresa tu password"
                 type={showPassword ? "text" : "password"}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 />
                 <button  onClick={togglePasswordVisibility} className="absolute inset-y-0 right-3 text-3xl">
                   <IoEyeSharp />
@@ -93,13 +115,13 @@ export default function Login() {
               </div>
               
             </div>
-            {state?.errors?.password && (
+            {/*state?.errors?.password && (
               <ul>
                 {state.errors.password.map((error) => (
                   <li key={error}>{error}</li>
                 ))}
               </ul>
-            )}
+            )*/}
           </div>
 
           <div className="flex justify-center">
