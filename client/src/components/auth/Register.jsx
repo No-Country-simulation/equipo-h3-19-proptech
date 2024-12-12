@@ -1,23 +1,23 @@
-import { useState, useActionState, useEffect } from "react";
-import { useFormStatus } from "react-dom";
+import { useState } from "react";
+// import { useFormStatus } from "react-dom";
 import { Link } from "react-router-dom";
 import { prefix } from "./countries";
-import { signup } from "@/lib/auth.js";
+// import { signup } from "@/lib/auth.js";
 
 import Navbar from "../ui/Navbar";
 import Logo from "../../assets/Logo.png";
 import image2 from "../../assets/register.jpg";
-import { CgDanger } from "react-icons/cg";
+// import { CgDanger } from "react-icons/cg";
 
 export default function Temp() {
-  const [state, action] = useActionState(signup, undefined);
-  const { pending } = useFormStatus();
+  // const [state, action] = useActionState(signup, undefined);
+  // const { pending } = useFormStatus();
 
-  useEffect(() => {
-    if (state?.data) {
-      console.log(state.data)
-    }
-  }, [state]);
+  // useEffect(() => {
+  //   if (state?.data) {
+  //     console.log(state.data)
+  //   }
+  // }, [state]);
 
   const isSelectedClass =
     "font-bold text-xl text-colorPrimary underline underline-offset-8 cursor-pointer decoration-colorFourth";
@@ -25,6 +25,7 @@ export default function Temp() {
   const [isFirstForm, setIsFirstForm] = useState(true);
   const [isInversor, setIsInversor] = useState(true);
   const [openPrefixList, setOpenPrefixList] = useState(false);
+
   const initialDataState = {
     firstName: "",
     lastName: "",
@@ -38,8 +39,9 @@ export default function Temp() {
     confirm: ''
   }
   const [data, setData] = useState(initialDataState)
-  const [showPass, setShowPass] = useState(false)
-  const [showConfirm, setShowConfirm] = useState(false)
+
+  // const [showPass, setShowPass] = useState(false)
+  // const [showConfirm, setShowConfirm] = useState(false)
 
   const handleCountry = (country) => {
     const found = prefix.find((pref) => pref.country === country);
@@ -60,7 +62,6 @@ export default function Temp() {
     });
     setOpenPrefixList(false);
   };
-
 
   const handleVisibilityPass1 = () => {
     const $pass1 = document.getElementById("password");
@@ -91,7 +92,7 @@ export default function Temp() {
       $eye2.classList.toggle("hidden");
     }
   };
-    
+
   const handleChange = event => {
     if (event.target.name === 'phone') {
       setData({
@@ -106,14 +107,10 @@ export default function Temp() {
     }
   };
 
-
-
-
-
   return (
     <div
       style={{ backgroundImage: `url(${image2})` }}
-      className=" w-screen flex flex-col bg-cover bg-center px-6 md:px-0  flex justify-center content-center  flex-wrap "
+      className=" w-screen flex flex-col bg-cover bg-center px-6 md:px-0 justify-center content-center flex-wrap "
     >
       <div className="py-6 inset-0 bg-[#447089] bg-opacity-80 w-full h-full flex flex-col">
         <Navbar />
@@ -159,7 +156,7 @@ export default function Temp() {
             </div>
 
             <form
-              action={action}
+              // action={action}
               className="w-full flex flex-col items-center gap-[15px]"
             >
               <div
@@ -185,12 +182,12 @@ export default function Temp() {
                           value={data.firstName}
                           onChange={handleChange}
                         />
-                        {state?.errors?.firstName && (
+                        { /* state?.errors?.firstName && (
                           <p className="flex items-center gap-2 text-xs text-red-500">
-                              <CgDanger />
+                            <CgDanger />
                             {state.errors.firstName}
                           </p>
-                        )}
+                        ) */}
                       </div>
                     </div>
                     <div className="w-1/2 flex flex-col gap-[11px] self-stretch">
@@ -207,10 +204,10 @@ export default function Temp() {
                           name="lastName"
                           onChange={handleChange}
                         />
-                        {state?.errors?.lastName && (
+                        {/*state?.errors?.lastName && (
                           <p className="flex items-center gap-2 text-xs text-red-500">
-                              <CgDanger />{state.errors.lastName}</p>
-                        )}
+                            <CgDanger />{state.errors.lastName}</p>
+                        )*/}
                       </div>
                     </div>
                   </div>
@@ -232,8 +229,8 @@ export default function Temp() {
                           value={data.email}
                           onChange={handleChange}
                         />
-                        {state?.errors?.email && <p className="flex items-center gap-2 text-xs text-red-500">
-                          <CgDanger />{state.errors.email}</p>}
+                        {/*state?.errors?.email && <p className="flex items-center gap-2 text-xs text-red-500">
+                          <CgDanger />{state.errors.email}</p>*/}
                       </div>
                     </div>
 
@@ -264,10 +261,10 @@ export default function Temp() {
                             </option>
                           ))}
                         </datalist>
-                        {state?.errors?.country && (
+                        {/*state?.errors?.country && (
                           <p className="flex items-center gap-2 text-xs text-red-500">
-                              <CgDanger />{state.errors.country}</p>
-                        )}
+                            <CgDanger />{state.errors.country}</p>
+                        )*/}
                       </div>
                     </div>
                   </div>
@@ -331,7 +328,7 @@ export default function Temp() {
                             value={data.phone}
                             onChange={handleChange}
                           />
-              
+
                         </div>
                       </div>
                     </div>
@@ -381,7 +378,7 @@ export default function Temp() {
                             </label>
                           </div>
                         </div>
-                        {state?.errors?.role && <p>{state.errors.role}</p>}
+                        {/*state?.errors?.role && <p>{state.errors.role}</p>*/}
                       </div>
                     </div>
                   </div>
@@ -423,8 +420,8 @@ export default function Temp() {
                       id="eye1-on"
                       onClick={handleVisibilityPass1}
                     />
-                    {state?.errors?.password && <p className="flex items-center gap-2 text-xs text-red-500">
-                      <CgDanger />{state.errors.password}</p>}
+                    {/*state?.errors?.password && <p className="flex items-center gap-2 text-xs text-red-500">
+                      <CgDanger />{state.errors.password}</p>*/}
                   </div>
                 </div>
                 <div className="flex flex-col gap-[11px] self-stretch relative">
@@ -458,32 +455,30 @@ export default function Temp() {
                       id="eye2-on"
                       onClick={handleVisibilityPass2}
                     />
-                    {state?.errors?.confirm && <p className="flex items-center gap-2 text-xs text-red-500">
-                      <CgDanger />{state.errors.confirm}</p>}
+                    {/*state?.errors?.confirm && <p className="flex items-center gap-2 text-xs text-red-500">
+                      <CgDanger />{state.errors.confirm}</p>*/}
                   </div>
                 </div>
-                <span className="font-normal text-[18px] text-colorPrimary"  style={{
-                        textShadow: "2px 2px 5px rgba(0, 0, 0, 0.5)",
-                      }}>
+                <span className="font-normal text-[18px] text-colorPrimary" style={{
+                  textShadow: "2px 2px 5px rgba(0, 0, 0, 0.5)",
+                }}>
                   Configurar Autenticación de 2 Pasos
                 </span>
               </div>
-
               <div className="flex justify-center">
-                <button
-                  disabled={pending}
-                  type="submit"
+                <Link
+                  to={'/inversor/dashboard/'}
                   className="bg-colorFourth px-3 py-2 cursor-pointer rounded-md font-semibold text-colorPrimary "
                 >
                   CONTINUAR
-                </button>
+                </Link>
               </div>
             </form>
             <span className="font-normal text-base  text-colorPrimary mt-2">
               Ya tienes una cuenta?{" "}
               <Link to="/login" className="font-bold hover:text-gray-200" style={{
-                        textShadow: "2px 2px 5px rgba(0, 0, 0, 0.5)",
-                      }}>
+                textShadow: "2px 2px 5px rgba(0, 0, 0, 0.5)",
+              }}>
                 Inicia sesión
               </Link>
             </span>
