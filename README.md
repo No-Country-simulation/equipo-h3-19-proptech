@@ -60,7 +60,7 @@ UX/UI
 - [Naomi Leiva](https://www.linkedin.com/in/naomi-b-leiva)
   
 Front end
-- [Duvan Aponte Ramírez]()
+- [Duvan Aponte Ramírez](https://www.linkedin.com/in/duvan-aponte-ramirez-269738189)
 
 Full stack
 - [Pablo Spector](https://www.linkedin.com/in/pablo-spector)
