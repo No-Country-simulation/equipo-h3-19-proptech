@@ -66,7 +66,7 @@ Full stack
 - [Pablo Spector](https://www.linkedin.com/in/pablo-spector)
 
 Team Leader
-- [María Cristina Gutiérrez]()
+- [María Cristina Gutiérrez](https://www.linkedin.com/in/mcgutierrezdev)
 
 
 ## Agradecimientos 🎁
