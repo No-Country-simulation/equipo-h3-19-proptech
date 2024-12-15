@@ -66,3 +66,11 @@ export async function deleteUser(id) {
     return [error]
   }
 }
+
+
+export async function getUserById(id){
+
+  const req = await axios.get(`${URL}/${id}`)
+  
+  return req.data
+}

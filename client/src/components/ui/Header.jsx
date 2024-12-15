@@ -18,7 +18,7 @@ export default function Header() {
                     <img src={Logo} />
                 </div>
                 <div>
-                    <div>Financial.land</div>
+                    <div className="font-serif text-xl font-bold">Financial Land</div>
                 </div>
            </div>
         </div>

@@ -1,0 +1,200 @@
+export const investmentshistory = [
+  {
+    date: '29/11/2024',
+    amountinvested: '2.000.000',
+    currency: 'USD',
+    amountrecovered: '90.000',
+    monthlyvariation: '+90.000',
+    dailyreturn: '-1.010.000',
+    projectedgain: '80.000',
+    expectedtotal: '2.080.000',
+    remainingpayments: '22'
+  },
+  {
+    date: '29/11/2024',
+    amountinvested: '2.000.000',
+    currency: 'USD',
+    amountrecovered: '90.000',
+    monthlyvariation: '+90.000',
+    dailyreturn: '-1.010.000',
+    projectedgain: '80.000',
+    expectedtotal: '2.080.000',
+    remainingpayments: '22'
+  },
+  {
+    date: '29/11/2024',
+    amountinvested: '2.000.000',
+    currency: 'USD',
+    amountrecovered: '90.000',
+    monthlyvariation: '+90.000',
+    dailyreturn: '-1.010.000',
+    projectedgain: '80.000',
+    expectedtotal: '2.080.000',
+    remainingpayments: '22'
+  },
+  {
+    date: '29/11/2024',
+    amountinvested: '2.000.000',
+    currency: 'USD',
+    amountrecovered: '90.000',
+    monthlyvariation: '+90.000',
+    dailyreturn: '-1.010.000',
+    projectedgain: '80.000',
+    expectedtotal: '2.080.000',
+    remainingpayments: '22'
+  },
+  {
+    date: '29/11/2024',
+    amountinvested: '2.000.000',
+    currency: 'USD',
+    amountrecovered: '90.000',
+    monthlyvariation: '+90.000',
+    dailyreturn: '-1.010.000',
+    projectedgain: '80.000',
+    expectedtotal: '2.080.000',
+    remainingpayments: '22'
+  },
+  {
+    date: '29/11/2024',
+    amountinvested: '2.000.000',
+    currency: 'USD',
+    amountrecovered: '90.000',
+    monthlyvariation: '+90.000',
+    dailyreturn: '-1.010.000',
+    projectedgain: '80.000',
+    expectedtotal: '2.080.000',
+    remainingpayments: '22'
+  },
+  {
+    date: '29/11/2024',
+    amountinvested: '2.000.000',
+    currency: 'USD',
+    amountrecovered: '90.000',
+    monthlyvariation: '+90.000',
+    dailyreturn: '-1.010.000',
+    projectedgain: '80.000',
+    expectedtotal: '2.080.000',
+    remainingpayments: '22'
+  },
+  {
+    date: '29/11/2024',
+    amountinvested: '2.000.000',
+    currency: 'USD',
+    amountrecovered: '90.000',
+    monthlyvariation: '+90.000',
+    dailyreturn: '-1.010.000',
+    projectedgain: '80.000',
+    expectedtotal: '2.080.000',
+    remainingpayments: '22'
+  },
+  {
+    date: '29/11/2024',
+    amountinvested: '2.000.000',
+    currency: 'USD',
+    amountrecovered: '90.000',
+    monthlyvariation: '+90.000',
+    dailyreturn: '-1.010.000',
+    projectedgain: '80.000',
+    expectedtotal: '2.080.000',
+    remainingpayments: '22'
+  },
+  {
+    date: '29/11/2024',
+    amountinvested: '2.000.000',
+    currency: 'USD',
+    amountrecovered: '90.000',
+    monthlyvariation: '+90.000',
+    dailyreturn: '-1.010.000',
+    projectedgain: '80.000',
+    expectedtotal: '2.080.000',
+    remainingpayments: '22'
+  },
+  {
+    date: '29/11/2024',
+    amountinvested: '2.000.000',
+    currency: 'USD',
+    amountrecovered: '90.000',
+    monthlyvariation: '+90.000',
+    dailyreturn: '-1.010.000',
+    projectedgain: '80.000',
+    expectedtotal: '2.080.000',
+    remainingpayments: '22'
+  },
+  {
+    date: '29/11/2024',
+    amountinvested: '2.000.000',
+    currency: 'USD',
+    amountrecovered: '90.000',
+    monthlyvariation: '+90.000',
+    dailyreturn: '-1.010.000',
+    projectedgain: '80.000',
+    expectedtotal: '2.080.000',
+    remainingpayments: '22'
+  },
+  {
+    date: '29/11/2024',
+    amountinvested: '2.000.000',
+    currency: 'USD',
+    amountrecovered: '90.000',
+    monthlyvariation: '+90.000',
+    dailyreturn: '-1.010.000',
+    projectedgain: '80.000',
+    expectedtotal: '2.080.000',
+    remainingpayments: '22'
+  },
+  {
+    date: '29/11/2024',
+    amountinvested: '2.000.000',
+    currency: 'USD',
+    amountrecovered: '90.000',
+    monthlyvariation: '+90.000',
+    dailyreturn: '-1.010.000',
+    projectedgain: '80.000',
+    expectedtotal: '2.080.000',
+    remainingpayments: '22'
+  },
+  {
+    date: '29/11/2024',
+    amountinvested: '2.000.000',
+    currency: 'USD',
+    amountrecovered: '90.000',
+    monthlyvariation: '+90.000',
+    dailyreturn: '-1.010.000',
+    projectedgain: '80.000',
+    expectedtotal: '2.080.000',
+    remainingpayments: '22'
+  },
+  {
+    date: '29/11/2024',
+    amountinvested: '2.000.000',
+    currency: 'USD',
+    amountrecovered: '90.000',
+    monthlyvariation: '+90.000',
+    dailyreturn: '-1.010.000',
+    projectedgain: '80.000',
+    expectedtotal: '2.080.000',
+    remainingpayments: '22'
+  },
+  {
+    date: '29/11/2024',
+    amountinvested: '2.000.000',
+    currency: 'USD',
+    amountrecovered: '90.000',
+    monthlyvariation: '+90.000',
+    dailyreturn: '-1.010.000',
+    projectedgain: '80.000',
+    expectedtotal: '2.080.000',
+    remainingpayments: '22'
+  },
+  {
+    date: '29/11/2024',
+    amountinvested: '2.000.000',
+    currency: 'USD',
+    amountrecovered: '90.000',
+    monthlyvariation: '+90.000',
+    dailyreturn: '-1.010.000',
+    projectedgain: '80.000',
+    expectedtotal: '2.080.000',
+    remainingpayments: '22'
+  }
+]

@@ -14,12 +14,10 @@ const userSlice = createSlice({
   
   reducers: {
     login(state, action) {
-      
-  
       state.id = action.payload.id;
       state.email = action.payload.email;
       state.token =  action.payload.token;
-      //state.isLoggedIn = true;
+      state.isLoggedIn = true;
 
      // console.log("Estado después del login:", state); // Verifica aquí
     },

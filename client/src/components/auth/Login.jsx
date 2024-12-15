@@ -1,13 +1,13 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React,{  useState } from "react";
- import { useFormStatus } from "react-dom";
+ //import { useFormStatus } from "react-dom";
 
 import {signin} from "../../services/auth.js"
 
 import { useDispatch } from "react-redux";
 import { login } from "../../redux/slices/userSlices";
 
-import { Link } from 'react-router-dom';
+import { Link,  useNavigate } from 'react-router-dom';
 import image1 from "../../assets/imagenLogin.jpg";
 import Logo from "../../assets/Logo.png";
 import Navbar from "../ui/Navbar";
@@ -17,6 +17,7 @@ import { IoEyeSharp } from "react-icons/io5";
 
 
 export default function Login() {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -24,7 +25,7 @@ export default function Login() {
 
   const dispatch = useDispatch();
   //const [state, action] = useActionState(signin, undefined);
-  const { pending } = useFormStatus();
+  //const { pending } = useFormStatus();
 
 
 
@@ -37,23 +38,24 @@ export default function Login() {
 
     try {
       const response = await signin({ email, password });
+
+      console.log(response)
       if (response && response._id && response.email) {
         const {email, _id, token}= response;
-        dispatch( login({_id, email, token}))
-   
-        // dispatch(setUser(response.data)); // Actualiza el estado global si es necesario
+        dispatch( login({id:_id, email, token}))
+
+
+        navigate('/inversor/dashboard/')
       }
     } catch (error) {
       console.error("Error al iniciar sesión:", error);
     }
   }
 
-
   const togglePasswordVisibility = () => {
    // event.preventDefault(); // Evita la recarga de la página
     setShowPassword(!showPassword);
   };
-
 
 
 
@@ -126,7 +128,7 @@ export default function Login() {
 
           <div className="flex justify-center">
             <button
-              disabled={pending}
+             
               type="submit"
               className="bg-colorFourth px-3 py-2 cursor-pointer rounded-md font-semibold text-colorPrimary "
             >
