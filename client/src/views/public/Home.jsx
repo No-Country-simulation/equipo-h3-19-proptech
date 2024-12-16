@@ -4,7 +4,7 @@ import Carousel from "../../components/carrouselNoticias/Carousel";
 import Acordion from "../../components/acordeonPreguntas/acordPre.jsx";
 import SendEmail from "../../components/sendContactoEmail/sendEmail.jsx";
 import Footer from "../../components/ui/footer.jsx";
-import Calculadora from "../../components/calculadora/calculadoraInversion.jsx";
+import Calculadora from "../../components/calculadora/calculadoraPrestamos.jsx";
 import CalendaryReunion from "../../components/calendars/calendaryReunion.jsx";
 
 import ImagenFondo from "../../assets/imageBack.png";
