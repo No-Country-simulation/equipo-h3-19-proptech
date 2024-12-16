@@ -7,7 +7,7 @@ export default function Main() {
   return (
     <div className="grid grid-cols-4 gap-x-2 mx-2 bg-[#fafafa]">
       <Logo />
-      <Navbar user={{src: "/assets/user.svg", role: "inversor"}} />
+      <Navbar user={{src: "/assets/user-1.svg", role: "beneficiary"}} />
       <Sidebar />
       <div className="col-span-3">
         <Outlet />

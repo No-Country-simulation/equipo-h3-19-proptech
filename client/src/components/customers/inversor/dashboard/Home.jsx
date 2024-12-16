@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
-import Notifications from "./Notifications";
+import Notifications from "@ui/Notifications";
 import RecentTable from './transactions/Recent/RecentTable'
 
-export default function Inicio() {
+export default function Home() {
   return (
     <div className="w-full h-[calc(100dvh-56px)] flex flex-col px-5 py-7 gap-7">
       <div className="flex flex-row w-full items-center justify-between" >
@@ -15,7 +15,9 @@ export default function Inicio() {
         </Link>
       </div>
       <div className="w-full flex flex-col px-5 pt-7 gap-7 overflow-auto scroll-hidden">
-        <Notifications />
+        <Notifications messages={[{
+          id: '1', body: 'Has recibido el 2/1 un pago de USD 90.000 a tu cuenta de BBVA.'
+        }]} />
         <div className="flex flex-row bg-white drop-shadow-[0_4px_4px_rgba(0,0,0,0.25)] ">
 
           <div className="flex flex-col">

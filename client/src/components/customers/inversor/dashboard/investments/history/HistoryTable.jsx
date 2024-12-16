@@ -1,8 +1,8 @@
-import Table from "../../Table"
-import TDCell from "../../TDCell"
-import TDRow from "../../TDRow"
-import THCell from "../../THCell"
-import THrow from "../../THrow"
+import Table from "@ui/Table"
+import TDCell from "@ui/TDCell"
+import TDRow from "@ui/TDRow"
+import THCell from "@ui/THCell"
+import THrow from "@ui/THrow"
 import { investmentshistory } from "./data"
 
 export default function HistoryTable() {

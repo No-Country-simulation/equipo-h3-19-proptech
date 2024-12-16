@@ -1,6 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
+import PropTypes from 'prop-types'
 
-export default function Navbar() {
+export default function Navbar({ user }) {
   const navigate = useNavigate()
 
   const hideMenu = () => {
@@ -41,16 +42,34 @@ export default function Navbar() {
 
   const handlePrfilButtonClick = () => {
     handleClickCloseButton()
-    navigate("/inversor/dashboard/profile")
+    navigate(`/${user.role}/dashboard/profile`)
+  }
+
+  const showCalendar = () => {
+    const $calendar = document.getElementById('calendar')
+    $calendar.classList.remove('hidden')
+    $calendar.classList.add('flex')
+  }
+  const hideCalendar = () => {
+    const $calendar = document.getElementById('calendar')
+    $calendar.classList.remove('flex')
+    $calendar.classList.add('hidden')
   }
 
   return (
     <div className="flex items-center justify-between h-14 col-span-3 bg-darker-blue text-white rounded-2xl px-6">
       <div className="flex  gap-5">
-        <Link to='#' className="flex flex-row gap-1">
+        <button className="flex flex-row gap-1 relative" onClick={showCalendar}>
           <span className="font-normal text-[15px] text-[#faf9f6]">Calendario</span>
-          <img src="/assets/icons/arrow-down-white.svg" alt="caledar arrow" />
-        </Link>
+          <img src="/assets/icons/arrow-down-white.svg" alt="caledar arrow"/>
+        </button>
+        <div
+          id="calendar"
+          className="w-[100dvw] h-[99dvh] hidden pl-80 pt-14 top-0 left-0 absolute  bg-[#55555533] z-40 cursor-pointer"
+          onClick={hideCalendar}
+        >
+          <img className="w-[395px] h-[573px]" src="/assets/temp/calendar.svg" alt="calendar" />
+        </div>
         <Link to='#' className="flex flex-row gap-1">
           <span className="font-normal text-[15px] text-[#faf9f6]">Ayuda</span>
           <img src="/assets/icons/help-icon.svg" alt="caledar arrow" />
@@ -60,7 +79,7 @@ export default function Navbar() {
       <img src="/assets/search.svg" alt="search" />
 
       <div className="flex gap-9 relative">
-        <img className="cursor-pointer" src="/assets/user.svg" alt="usuario" onClick={showHideMenu} />
+        <img className="cursor-pointer" src={user.src} alt="usuario" onClick={showHideMenu} />
         <img src="/assets/icons/bell-icon.svg" alt="alerts" />
         <div
           className="hidden w-60 h-[116px] flex-col items-start justify-center -bottom-32 right-9 z-30 absolute px-6 gap-5"
@@ -123,4 +142,12 @@ export default function Navbar() {
       </div>
     </div>
   )
+}
+
+Navbar.propTypes = {
+  user: PropTypes.shape({
+    src: PropTypes.string,
+    role: PropTypes.string
+  })
+
 }
