@@ -1,24 +1,24 @@
-import Header from "../../components/ui/Header";
+import Header from "@ui/Header";
 import FlipCard from "../../components/FlipCard/FlipCard";
 import Carousel from "../../components/carrouselNoticias/Carousel";
 import Acordion from "../../components/acordeonPreguntas/acordPre.jsx";
 import SendEmail from "../../components/sendContactoEmail/sendEmail.jsx";
 import Footer from "../../components/ui/footer.jsx";
-import Calculadora from "../../components/calculadora/calculadoraPrestamos.jsx";
+import Calculadora from "../../components/calculadora/calculadoraInversion.jsx";
 import CalendaryReunion from "../../components/calendars/calendaryReunion.jsx";
 
 import ImagenFondo from "../../assets/imageBack.png";
 
-import { GrScorecard } from "react-icons/gr";
-import { MdOutlinePhoneCallback } from "react-icons/md";
-import { GiSecurityGate } from "react-icons/gi";
-import { MdOutlineSecurity } from "react-icons/md";
+// import { GrScorecard } from "react-icons/gr";
+// import { MdOutlinePhoneCallback } from "react-icons/md";
+// import { GiSecurityGate } from "react-icons/gi";
+// import { MdOutlineSecurity } from "react-icons/md";
 
 import { GiCash } from "react-icons/gi";
 import { LuCalendarClock } from "react-icons/lu";
 
-import { FaLinkedin } from "react-icons/fa";
-import { FaFacebookSquare } from "react-icons/fa";
+// import { FaLinkedin } from "react-icons/fa";
+// import { FaFacebookSquare } from "react-icons/fa";
 import { IoMdTime } from "react-icons/io";
 
 export default function Home() {
@@ -29,7 +29,7 @@ export default function Home() {
         {/** 1 section */}
         <div className="w-full flex py-28 px-10">
           {/** izquierda  */}
-          <div className="w-1/2 w-full flex  justify-center ">
+          <div className="w-full flex  justify-center ">
             <div className="flex flex-col gap-14">
               <div className="flex flex-col gap-6 ">
                 <div className="text-5xl font-serif font-bold">
@@ -104,37 +104,32 @@ export default function Home() {
                 description={
                   "Seguridad garantizada de estabilidad financiera de prestarios"
                 }
-                icono={<GrScorecard />}
               />
               <FlipCard
                 title={"soporte 24/7"}
                 description={
                   "Atencion en linea para resolver cualquier consulta o inquietud"
                 }
-                icono={<MdOutlinePhoneCallback />}
               />
             </div>
-            <div className="flex flex justify-evenly">
+            <div className="flex justify-evenly">
               <FlipCard
                 title={"Rentabilidad competitiva"}
                 description={
                   "Tasas de retorno superiores al promedio del mercado, optimizadas para maximizar tus ganancias."
                 }
-                icono={<GiSecurityGate />}
               />
               <FlipCard
                 title={"Diversificacion de portafolio"}
                 description={
                   "Oportunidades para invertir en diferentes tipos de proyectos con niveles de riesgo ajustados a tus objetivos financieros"
                 }
-                icono={<MdOutlineSecurity />}
               />
               <FlipCard
                 title={"Transparencia"}
                 description={
                   "Documentación verificada de cada prestatario y garante. Descarga de documentación de análisis y reportes"
                 }
-                icono={<MdOutlinePhoneCallback />}
               />
             </div>
           </div>

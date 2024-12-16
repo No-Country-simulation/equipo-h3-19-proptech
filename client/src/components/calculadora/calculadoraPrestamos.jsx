@@ -1,10 +1,8 @@
-import React,{useState} from "react";
+import { useState } from "react";
 import Swal from 'sweetalert2'
 
 const calculadora = () => {
-  
-  
-  
+
   const [loanAmount, setLoanAmount] = useState("");
   const [months, setMonths] = useState("");
   const [monthlyPayment, setMonthlyPayment] = useState(null);
@@ -12,53 +10,49 @@ const calculadora = () => {
 
   const [cuota, setCuota] = useState(null);
 
-
-
   const calculateLoan = () => {
     const P = parseFloat(loanAmount); //p = monto del prestamo
     const r = 0.015; // r = taza de interes mensual
     const n = parseInt(months); //n = plazo en meses
     const c = parseInt(cuota);  //c = cuota fija
 
-   /* if (!P || !r || !n) {
-      alert("Por favor, ingresa todos los valores correctamente.");
-      return;
-    }
-    */
+    /* if (!P || !r || !n) {
+       alert("Por favor, ingresa todos los valores correctamente.");
+       return;
+     }
+     */
 
 
-    if(P && n){
+    if (P && n) {
       // Fórmula para calcular la cuota mensual
-    const monthlyRate = r;
-    const monthlyQuota =
-      (P * monthlyRate * Math.pow(1 + monthlyRate, n)) /
-      (Math.pow(1 + monthlyRate, n) - 1);
+      const monthlyRate = r;
+      const monthlyQuota =
+        (P * monthlyRate * Math.pow(1 + monthlyRate, n)) /
+        (Math.pow(1 + monthlyRate, n) - 1);
 
-    // Generar tabla de pagos
-    const schedule = [];
-    let remainingBalance = P;
+      // Generar tabla de pagos
+      const schedule = [];
+      let remainingBalance = P;
 
-    for (let i = 1; i <= n; i++) {
-      const interestPayment = remainingBalance * monthlyRate;
-      const principalPayment = monthlyQuota - interestPayment;
-      remainingBalance -= principalPayment;
+      for (let i = 1; i <= n; i++) {
+        const interestPayment = remainingBalance * monthlyRate;
+        const principalPayment = monthlyQuota - interestPayment;
+        remainingBalance -= principalPayment;
 
-      schedule.push({
-        month: i,
-        principalPayment: principalPayment.toFixed(2),
-        interestPayment: interestPayment.toFixed(2),
-        remainingBalance: remainingBalance.toFixed(2),
-      });
-    }
+        schedule.push({
+          month: i,
+          principalPayment: principalPayment.toFixed(2),
+          interestPayment: interestPayment.toFixed(2),
+          remainingBalance: remainingBalance.toFixed(2),
+        });
+      }
 
-    setMonthlyPayment(monthlyQuota.toFixed(2));
-    setPaymentSchedule(schedule);
+      setMonthlyPayment(monthlyQuota.toFixed(2));
+      setPaymentSchedule(schedule);
 
-
-
-    const tableRows = schedule
-      .map(
-        (item) => `
+      const tableRows = schedule
+        .map(
+          (item) => `
       <tr  style="margin-bottom:6px;  border-solid:1px;" >
         <td>${item.month}</td>
         <td>${item.principalPayment}</td>
@@ -66,9 +60,9 @@ const calculadora = () => {
         <td>${item.remainingBalance}</td>
       </tr>
     `
-      )
-      .join("");
-    const htmlContent = `
+        )
+        .join("");
+      const htmlContent = `
     <p>Cuota mensual: <strong>${monthlyQuota.toFixed(2)}</strong></p>
     <table style="margin-top:20px; width: 100%; border-collapse: collapse; text-align: left; padding-top:10px;">
       <thead>
@@ -85,19 +79,16 @@ const calculadora = () => {
     </table>
   `;
 
-  Swal.fire({
-    title: "Simulacion de prestamo",
-
-    html: htmlContent,
-    confirmButtonText: "Aceptar",
-    width:"60rem",
-    confirmButtonText: "Descargar simulacion",
-    confirmButtonColor: "#64B742"
-  });
-
+      Swal.fire({
+        title: "Simulacion de prestamo",
+        html: htmlContent,
+        confirmButtonText: "Aceptar",
+        width: "60rem",
+        // confirmButtonText: "Descargar simulacion",
+        confirmButtonColor: "#64B742"
+      });
     }
-    else if(P  && c){
-
+    else if (P && c) {
 
       const htmlContent = `
     <p>Cuota mensual: <strong> asdsa </strong></p>
@@ -118,25 +109,16 @@ const calculadora = () => {
 
       Swal.fire({
         title: "Simulacion de prestamo por cuota fija",
-    
+
         html: htmlContent,
         confirmButtonText: "Aceptar",
-        width:"60rem",
-        confirmButtonText: "Descargar simulacion",
+        width: "60rem",
+        // confirmButtonText: "Descargar simulacion",
         confirmButtonColor: "#64B742"
       });
     }
-
   };
 
-
-
-
- 
-
-
-
-    
   return (
     <div className="border bg-gray-200 border-solid  w-96 rounded-md p-6">
       <div className="text-lg">Calcula tu rendimiento estimado</div>
@@ -148,9 +130,9 @@ const calculadora = () => {
             ingresa el monto que querrias invertir y en que moneda
           </div>
           <div className="flex justify-center gap-2">
-            <input 
-              className="w-3/4 h-8" 
-              type="number" 
+            <input
+              className="w-3/4 h-8"
+              type="number"
               value={loanAmount}
               onChange={(e) => setLoanAmount(e.target.value)}
               placeholder="Ej: 10000"
@@ -169,8 +151,8 @@ const calculadora = () => {
             ingresa el plazo en el que querrias invertir tu dinero
           </div>
           <div className="flex justify-center gap-2">
-            <input 
-              className="w-3/4 h-8" 
+            <input
+              className="w-3/4 h-8"
               value={months}
               onChange={(e) => setMonths(e.target.value)}
               placeholder="Ej: 24"
@@ -189,8 +171,8 @@ const calculadora = () => {
             ingrese el dinero fijo que quieres pagar
           </div>
           <div className="flex justify-center gap-2">
-            <input 
-              className="w-3/4 h-8" 
+            <input
+              className="w-3/4 h-8"
               value={cuota}
               onChange={(e) => setCuota(e.target.value)}
               placeholder="2500"
@@ -216,17 +198,13 @@ const calculadora = () => {
         </div>
 
         <div className="flex gap-1 justify-center">
-          <div 
+          <div
             className="bg-colorFourth text-colorPrimary font-semibold px-3 py-2 cursor-pointer rounded-md w-64 justify-center flex"
             onClick={calculateLoan}
-            >
+          >
             REALIZAR SIMULACION
           </div>
         </div>
-
-
-
-
       </div>
     </div>
   );
