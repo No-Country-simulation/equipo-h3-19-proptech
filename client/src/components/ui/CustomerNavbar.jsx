@@ -149,5 +149,4 @@ Navbar.propTypes = {
     src: PropTypes.string,
     role: PropTypes.string
   })
-
 }

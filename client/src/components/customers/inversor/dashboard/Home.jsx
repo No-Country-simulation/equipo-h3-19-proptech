@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <div className="w-full h-[calc(100dvh-56px)] flex flex-col px-5 py-7 gap-7">
       <div className="flex flex-row w-full items-center justify-between" >
-        <span className="font-normal text-[32px] text-black">Hola Martín</span>
+        <span className="font-normal text-[32px] text-black">Hola {userData.firstName} </span>
         <Link
           to="#"
           className="px-[15.80124282836914px] py-[6.583850860595703px] font-medium text-[16px] leading-[20px] text-center bg-[#64B742] text-white rounded-md"
