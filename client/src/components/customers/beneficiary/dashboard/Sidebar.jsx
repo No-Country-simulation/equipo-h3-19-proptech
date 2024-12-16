@@ -1,20 +1,15 @@
 import SidebarMenu from "./SidebarMenu"
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 export default function Sidebar() {
 
   const initialState = {
-    investments: false,
+    income: false,
     transactions: false,
     account: false,
     settings: false,
   }
   const [activeStates, setActiveStates] = useState(initialState);
-  const [current, setcurrent ] = useState('')
-
-  useEffect(()=> {
-    setcurrent(location.href.split('/').pop())
-  }, [])
 
   const handleClick = (key) => {
     setActiveStates({
@@ -42,70 +37,42 @@ export default function Sidebar() {
         <SidebarMenu
           label={'Panel de control'}
           icon={'home'}
-          target={'dashboard/'}
+          target={''}
           arrow={false}
-          handler={handleClick}
-          current={current}
         />
         <SidebarMenu
-          key={'investments'}
-          label={'Mis Inversiones'}
+          key={'loans'}
+          label={'Préstamos'}
           icon={'income'}
-          target={'investments'}
+          target={'loans-history'}
           arrow={true}
-          active={activeStates.investments}
-          current={current}
+          active={activeStates.income}
+          handler={handleClick}
           submenu={[
             {
-              label: 'Portafolio',
-              target: 'investments-portfolio'
+              label: "Historial de préstamos",
+              target: "loans-history"
             },
             {
-              label: 'Calendario',
-              target: 'investments-calendar'
-            },
-            {
-              label: 'Historial de inversiones',
-              target: 'investments-history'
-            },
-            {
-              label: 'Análisis y estadísticas',
-              target: 'investments-analysis'
-            },
-            {
-              label: 'Simulador de inversión',
-              target: 'investments-simulator'
+              label: "Simulador de préstamos",
+              target: "loans-simulator"
             }
           ]}
-          handler={handleClick}
         />
         <SidebarMenu
           label={'Transacciones'}
           icon={'transactions'}
           key={'transactions'}
-          target={'transactions'}
+          target={'transactions-recent'}
           arrow={true}
           active={activeStates.transactions}
-          current={current}
+          handler={handleClick}
           submenu={[
             {
-              label: 'Transacciones recientes',
-              target: 'transactions-recent'
-            },
-            {
-              label: 'Solicitar retiro',
-              target: 'transactions-withdraw'
-            },
-            {
-              label: 'Comisiones',
-              target: 'transactions-commisions'
-            },
-            {
-              label: 'Pagos',
-              target: 'transactions-payments'
+              label: "Transacciones Recientes",
+              target: "transactions-recent"
             }
           ]}
-          handler={handleClick}
         />
       </div>
       {/* TOP MENU */}
@@ -118,21 +85,19 @@ export default function Sidebar() {
           label={'Mi cuenta'}
           icon={'account'}
           key={'account'}
-          target={'dashboard/#'}
+          target={'account'}
           arrow={false}
           active={activeStates.account}
           handler={handleClick}
-          current={current}
         />
         <SidebarMenu
-          label={'Configuración'}
+          label={'Configuaración'}
           icon={'settings'}
           key={'settings'}
-          target={'dashboard/#'}
+          target={'profile'}
           arrow={false}
           active={activeStates.settings}
           handler={handleClick}
-          current={current}
         />
       </div>
       {/* BOTTOM MENU */}
