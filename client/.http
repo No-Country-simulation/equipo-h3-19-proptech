@@ -6,5 +6,10 @@
 @urls = https://www.alphavantage.co/query?function=NEWS_SENTIMENT&tickers=AAPL&apikey=D6T1KN96PMQL85BU
 
 
+@url2 = https://newsapi.org/v2/everything?language=es&q=tecnología&apiKey=8c32cc84a639479bb057ced9b362b802
+
 
 GET {{urls}} HTTP/1.1
+
+####
+GET {{url2}} HTTP/1.1

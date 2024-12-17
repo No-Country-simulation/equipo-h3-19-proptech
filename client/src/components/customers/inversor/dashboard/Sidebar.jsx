@@ -58,23 +58,23 @@ export default function Sidebar() {
           submenu={[
             {
               label: 'Portafolio',
-              target: 'investments/portfolio'
+              target: 'investments-portfolio'
             },
             {
               label: 'Calendario',
-              target: 'investments/calendar'
+              target: 'investments-calendar'
             },
             {
               label: 'Historial de inversiones',
-              target: 'investments/history'
+              target: 'investments-history'
             },
             {
               label: 'Análisis y estadísticas',
-              target: 'investments/analysis'
+              target: 'investments-analysis'
             },
             {
               label: 'Simulador de inversión',
-              target: 'investments/simulator'
+              target: 'investments-simulator'
             }
           ]}
           handler={handleClick}
@@ -90,19 +90,19 @@ export default function Sidebar() {
           submenu={[
             {
               label: 'Transacciones recientes',
-              target: 'transactions/recent'
+              target: 'transactions-recent'
             },
             {
               label: 'Solicitar retiro',
-              target: 'transactions/withdraw'
+              target: 'transactions-withdraw'
             },
             {
               label: 'Comisiones',
-              target: 'transactions/commisions'
+              target: 'transactions-commisions'
             },
             {
               label: 'Pagos',
-              target: 'transactions/payments'
+              target: 'transactions-payments'
             }
           ]}
           handler={handleClick}
@@ -116,7 +116,7 @@ export default function Sidebar() {
       <div className="flex flex-col w-full p-5 gap-2">
         <SidebarMenu
           label={'Mi cuenta'}
-          icon={'report'}
+          icon={'account'}
           key={'account'}
           target={'dashboard/#'}
           arrow={false}
@@ -136,13 +136,6 @@ export default function Sidebar() {
         />
       </div>
       {/* BOTTOM MENU */}
-      {
-        /*
-        <SidebarMenu label={'Mis tarjetas'} icon={'cards'} target={'#'} arrow={true} />
-        <SidebarMenu label={'Ingresos'} icon={'income'} target={'#'} arrow={true} />
-        <SidebarMenu label={'Análisis de rendimiento'} icon={'returns'} target={'#'} arrow={true} />
-        */
-      }
     </div>
   )
 }
