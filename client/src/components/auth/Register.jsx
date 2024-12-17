@@ -1,47 +1,32 @@
-import { useState, useActionState, useEffect } from "react";
-// import { useFormStatus } from "react-dom";
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link,  useNavigate } from "react-router-dom";
 import { prefix } from "./countries";
-import { signup } from "@/lib/auth.js";
-
 import Navbar from "../ui/Navbar";
 import Logo from "../../assets/Logo.png";
 import image2 from "../../assets/register.jpg";
 import { CgDanger } from "react-icons/cg";
 
+import {createUser} from "../../services/user";
+
+
 export default function Temp() {
-  const [state, action] = useActionState(signup, undefined);
-  // const { pending } = useFormStatus();
-
-  useEffect(() => {
-    if (state?.data) {
-      console.log(state.data)
-    }
-  }, [state]);
-
-  const isSelectedClass =
-    "font-bold text-xl text-colorPrimary underline underline-offset-8 cursor-pointer decoration-colorFourth";
-  const noSelectedClass = "font-normal text-xl text-colorPrimary cursor-pointer";
-  const [isFirstForm, setIsFirstForm] = useState(true);
-  const [isInversor, setIsInversor] = useState(true);
-  const [openPrefixList, setOpenPrefixList] = useState(false);
-
-  const initialDataState = {
+  const navigate = useNavigate();
+  const [data, setData] = useState({
     firstName: "",
     lastName: "",
     country: "",
     email: "",
-    prefix: 54,
-    flag: "/assets/flags/Flag_of_Argentina.svg.webp",
     phone: 0,
-    role: '',
-    password: '',
-    confirm: ''
-  }
-  const [data, setData] = useState(initialDataState)
+    photeUrl: "/assets/flags/Flag_of_Argentina.svg.webp",
+    rol: "",
+    password: "",
+  });
 
-  // const [showPass, setShowPass] = useState(false)
-  // const [showConfirm, setShowConfirm] = useState(false)
+  const [isFirstForm, setIsFirstForm] = useState(true);
+  const [isInversor, setIsInversor] = useState(true);
+  const [openPrefixList, setOpenPrefixList] = useState(false);
+  const [showPass, setShowPass] = useState(false);
+  const [showConfirm, setShowConfirm] = useState(false);
 
   const handleCountry = (country) => {
     const found = prefix.find((pref) => pref.country === country);
@@ -93,29 +78,53 @@ export default function Temp() {
     }
   };
 
-  const handleChange = event => {
-    if (event.target.name === 'phone') {
+  const handleChange = (event) => {
+    if (event.target.name === "phone") {
       setData({
         ...data,
-        phone: Number(event.target.value)
-      })
+        phone: Number(event.target.value),
+      });
     } else {
       setData({
         ...data,
-        [event.target.name]: event.target.value
-      })
+        [event.target.name]: event.target.value,
+      });
     }
   };
 
+  const handleRoleChange = (rol) => {
+    setIsInversor(rol === "inversor");
+    setData((prev) => ({
+      ...prev,
+      rol,
+    }));
+  };
+
+
+  //enviar la info al verify
+  const handleRegisterSuccess = (email) => {
+    navigate('/verifyCount', { state: { email } });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    createUser(data)
+    const email = data.email
+    handleRegisterSuccess(email);
+  };
+
+
+
+
   return (
     <div
-      style={{ backgroundImage: `url(${image2})` }}
-      className=" w-screen flex flex-col bg-cover bg-center px-6 md:px-0 justify-center content-center flex-wrap "
+      style={{ backgroundImage: `url(${image2})`,  minHeight: '100vh', }}
+      className="relative w-screen flex flex-col bg-cover bg-center px-6 md:px-0  flex justify-center content-center  flex-wrap "
     >
-      <div className="py-6 inset-0 bg-[#447089] bg-opacity-80 w-full h-full flex flex-col">
+      <div className="w-full min-h-screen py-6 inset-0 bg-[#447089] bg-opacity-80  flex flex-col">
         <Navbar />
         <div className="flex w-full justify-center">
-          <div className="py-10 rounded-lg border-coloPrimary border w-1/2 flex flex-col gap-6 backdrop-blur-sm bg-white/30 text-colorPrimary p-4 items-center">
+          <div className="py-10 px-10 rounded-lg border-coloPrimary border w-1/2 flex flex-col gap-6 backdrop-blur-sm bg-white/30 text-colorPrimary p-4 items-center">
             <div>
               <div className="flex w-full justify-center">
                 <div className=" w-32 h-32 rounded-full ">
@@ -136,7 +145,7 @@ export default function Temp() {
             </div>
             <div className="flex items-center gap-[27px] flex-row">
               <span
-                className={isFirstForm ? isSelectedClass : noSelectedClass}
+                className={isFirstForm ? "font-bold text-xl text-colorPrimary underline underline-offset-8 cursor-pointer decoration-colorFourth" : "font-normal text-xl text-colorPrimary cursor-pointer"}
                 style={{
                   textShadow: "2px 2px 5px rgba(0, 0, 0, 0.5)",
                 }}
@@ -145,7 +154,7 @@ export default function Temp() {
                 Información personal
               </span>
               <span
-                className={!isFirstForm ? isSelectedClass : noSelectedClass}
+                className={!isFirstForm ? "font-bold text-xl text-colorPrimary underline underline-offset-8 cursor-pointer decoration-colorFourth" : "font-normal text-xl text-colorPrimary cursor-pointer"}
                 onClick={() => setIsFirstForm(false)}
                 style={{
                   textShadow: "2px 2px 5px rgba(0, 0, 0, 0.5)",
@@ -156,16 +165,12 @@ export default function Temp() {
             </div>
 
             <form
-              action={action}
+              onSubmit={handleSubmit}
               className="w-full flex flex-col items-center gap-[15px]"
             >
-              <div
-                className={
-                  isFirstForm ? "w-full flex gap-[118px] my-4" : "hidden"
-                }
-              >
+              <div className={isFirstForm ? "w-full flex gap-[118px] my-4" : "hidden"}>
                 <div className="w-full flex flex-col gap-6">
-                  {/**name and apellido */}
+                  {/* Name and last name */}
                   <div className="w-full flex gap-4">
                     <div className="w-1/2 flex flex-col gap-[11px] self-stretch">
                       <div className="flex flex-col text-xl gap-2 ">
@@ -182,12 +187,6 @@ export default function Temp() {
                           value={data.firstName}
                           onChange={handleChange}
                         />
-                        {state?.errors?.firstName && (
-                          <p className="flex items-center gap-2 text-xs text-red-500">
-                            <CgDanger />
-                            {state.errors.firstName}
-                          </p>
-                        )}
                       </div>
                     </div>
                     <div className="w-1/2 flex flex-col gap-[11px] self-stretch">
@@ -204,15 +203,11 @@ export default function Temp() {
                           name="lastName"
                           onChange={handleChange}
                         />
-                        {state?.errors?.lastName && (
-                          <p className="flex items-center gap-2 text-xs text-red-500">
-                            <CgDanger />{state.errors.lastName}</p>
-                        )}
                       </div>
                     </div>
                   </div>
 
-                  {/**email pais residencia */}
+                  {/* Email and country */}
                   <div className="flex w-full gap-4">
                     <div className="w-1/2 flex flex-col gap-[11px] self-stretch">
                       <div className="flex flex-col text-xl gap-2 ">
@@ -229,8 +224,6 @@ export default function Temp() {
                           value={data.email}
                           onChange={handleChange}
                         />
-                        {state?.errors?.email && <p className="flex items-center gap-2 text-xs text-red-500">
-                          <CgDanger />{state.errors.email}</p>}
                       </div>
                     </div>
 
@@ -246,8 +239,6 @@ export default function Temp() {
                         <input
                           className="w-100 p-2 b-1 border bg-transparent"
                           name="country"
-                          id="country"
-                          list="countries"
                           value={data.country}
                           onChange={handleChange}
                         />
@@ -261,15 +252,11 @@ export default function Temp() {
                             </option>
                           ))}
                         </datalist>
-                        {state?.errors?.country && (
-                          <p className="flex items-center gap-2 text-xs text-red-500">
-                            <CgDanger />{state.errors.country}</p>
-                        )}
                       </div>
                     </div>
                   </div>
 
-                  {/**telefono  y pregunta inversion */}
+                  {/* Phone */}
                   <div className="flex w-full gap-4">
                     <div className="w-1/2 flex flex-col gap-[11px] self-stretch">
                       <div className="flex flex-col text-xl gap-2 ">
@@ -280,213 +267,156 @@ export default function Temp() {
                         >
                           Teléfono
                         </span>
-                        <div className="flex items-center justify-between">
-                          <div className="w-[120px]  h-[50px] flex flex-row items-center gap-2 px-2.5 py-[9px] border relative">
-                            <span className="font-normal text-base text-colorPrimary flex w-1/3">
-                              +{data.prefix}
-                            </span>
-                            <img
-                              className="size-[20px] w-1/3"
-                              src={data.flag}
-                              alt="argentina prefix"
-                            />
-                            <img
-                              className="size-[14px] cursor-pointer hover:scale-150 w-1/3"
-                              src="/assets/icons/arrow-down.svg"
-                              onClick={() => setOpenPrefixList(true)}
-                            />
-                            <input
-                              type="text"
-                              className="hidden"
-                              name="prefix"
-                              value={data.prefix}
-                              onChange={handleChange}
-                            />
-                            <ul
-                              className={
-                                openPrefixList
-                                  ? "overflow-auto w-[107px] h-48 absolute top-12 left-0 z-10 bg-transparent border"
-                                  : "hidden"
-                              }
-                            >
-                              {prefix?.map(({ pref, src }) => (
-                                <li
-                                  id={pref}
-                                  onClick={handleClickPrefixItem}
-                                  className="h-[50px] flex items-center justify-center hover:border-2 hover:border-black cursor-pointer gap-2"
-                                  key={pref}
-                                >
-                                  +{pref} <img src={src} alt={src} />
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
+                        <div className="flex items-center">
                           <input
                             type="number"
-                            className="w-100 p-2 b-1 border bg-transparent"
+                            className="w-full p-2 b-1 border bg-transparent"
                             name="phone"
                             value={data.phone}
                             onChange={handleChange}
                           />
-
                         </div>
                       </div>
                     </div>
 
-                    <div className="w-1/2 flex flex-col gap-[19px] self-stretch">
+                    <div className="w-1/2 flex flex-col gap-[11px] self-stretch">
                       <div className="flex flex-col text-xl gap-2 ">
                         <span
                           style={{
                             textShadow: "2px 2px 5px rgba(0, 0, 0, 0.5)",
                           }}
                         >
-                          Para qué deseas una cuenta?
+                          Rol
                         </span>
-                        <div className="flex items-center gap-[51px] self-stretch">
-                          <div className="flex items-center gap-2.5">
+                        <div className="flex gap-4">
+                          <label
+                            htmlFor="role_inversor"
+                            style={{
+                              textShadow: "2px 2px 5px rgba(0, 0, 0, 0.5)",
+                            }}
+                          >
                             <input
-                              type="checkbox"
-                              className="w-[34px] h-[34px]"
+                              type="radio"
+                              id="role_inversor"
                               name="role"
-                              value="INVERSOR"
-                              id="inversor"
-                              checked={isInversor}
-                              onChange={() => setIsInversor(true)}
+                              value="inversor"
+                              checked={data.rol === "inversor"}
+                              onChange={() => handleRoleChange("inversor")}
                             />
-                            <label
-                              htmlFor="inversor"
-                              className="font-normal text-[20px] text-colorPrimary"
-                            >
-                              Invertir
-                            </label>
-                          </div>
-                          <div className="flex items-center gap-2.5">
+                            Inversor
+                          </label>
+                          <label
+                            htmlFor="role_beneficiario"
+                            style={{
+                              textShadow: "2px 2px 5px rgba(0, 0, 0, 0.5)",
+                            }}
+                          >
                             <input
-                              type="checkbox"
-                              className="w-[34px] h-[34px]"
+                              type="radio"
+                              id="role_beneficiario"
                               name="role"
-                              value="BENEFICIARY"
-                              id="beneficiary"
-                              checked={!isInversor}
-                              onChange={() => setIsInversor(false)}
+                              value="solicitanteCredito"
+                              checked={data.rol === "solicitanteCredito"}
+                              onChange={() => handleRoleChange("solicitanteCredito")}
                             />
-                            <label
-                              htmlFor="beneficiary"
-                              className="font-normal text-[20px] text-colorPrimary"
-                            >
-                              Pedir financiación
-                            </label>
-                          </div>
+                            Beneficiario
+                          </label>
                         </div>
-                        {state?.errors?.role && <p>{state.errors.role}</p>}
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <div
-                className={
-                  !isFirstForm ? "flex flex-col gap-[15px] my-4" : "hidden"
-                }
-              >
-                <div className="flex flex-col gap-[11px] self-stretch relative">
-                  <div className="flex flex-col text-xl gap-2 ">
-                    <span
-                      style={{
-                        textShadow: "2px 2px 5px rgba(0, 0, 0, 0.5)",
-                      }}
-                    >
-                      Contraseña
-                    </span>
+              <div className={!isFirstForm ? "flex gap-6 w-full justify-center" : "hidden"}>
+                <div className="w-1/2 flex flex-col gap-[11px] self-stretch">
+                  <label
+                    htmlFor="password"
+                    style={{
+                      textShadow: "2px 2px 5px rgba(0, 0, 0, 0.5)",
+                    }}
+                  >
+                    Contraseña
+                  </label>
+                  <div className="relative">
                     <input
-                      type="text"
-                      className="w-100 p-2 b-1 border bg-transparent"
+                      type={showPass ? "text" : "password"}
                       name="password"
-                      id="password"
                       value={data.password}
                       onChange={handleChange}
+                      id="password"
+                      className="w-full p-2 border-b bg-transparent"
                     />
-                    <img
-                      className="hidden size-6 top-[53px] right-2 absolute z-10"
-                      src="/assets/icons/pass-visible-off.svg"
-                      alt="pass invisible"
-                      id="eye1-off"
-                      onClick={handleVisibilityPass1}
-                    />
-                    <img
-                      className="size-6 top-[53px] right-2 absolute z-10"
-                      src="/assets/icons/pass-visible-on.svg"
-                      alt="pass invisible"
-                      id="eye1-on"
-                      onClick={handleVisibilityPass1}
-                    />
-                    {state?.errors?.password && <p className="flex items-center gap-2 text-xs text-red-500">
-                      <CgDanger />{state.errors.password}</p>}
+                    <div className="absolute top-3 right-3">
+                      <span
+                        className={`cursor-pointer ${
+                          showPass ? "hidden" : ""
+                        }`}
+                        id="eye1-off"
+                        onClick={() => setShowPass(true)}
+                      >
+                        👁️
+                      </span>
+                      <span
+                        className={`cursor-pointer ${
+                          showPass ? "" : "hidden"
+                        }`}
+                        id="eye1-on"
+                        onClick={() => setShowPass(false)}
+                      >
+                        👁️
+                      </span>
+                    </div>
                   </div>
                 </div>
-                <div className="flex flex-col gap-[11px] self-stretch relative">
-                  <div className="flex flex-col text-xl gap-2 ">
-                    <span
-                      style={{
-                        textShadow: "2px 2px 5px rgba(0, 0, 0, 0.5)",
-                      }}
-                    >
-                      Repetir contraseña
-                    </span>
+
+                <div className="w-1/2 flex flex-col gap-[11px] self-stretch">
+                  <label
+                    htmlFor="confirm"
+                    style={{
+                      textShadow: "2px 2px 5px rgba(0, 0, 0, 0.5)",
+                    }}
+                  >
+                    Confirmar contraseña
+                  </label>
+                  <div className="relative">
                     <input
-                      type="text"
-                      className="w-100 p-2 b-1 border bg-transparent"
+                      type={showConfirm ? "text" : "password"}
                       name="confirm"
-                      id="confirm"
                       value={data.confirm}
                       onChange={handleChange}
+                      id="confirm"
+                      className="w-full p-2 border-b bg-transparent"
                     />
-                    <img
-                      className="hidden size-6 top-[53px] right-2 absolute z-10"
-                      src="/assets/icons/pass-visible-off.svg"
-                      alt="pass invisible"
-                      id="eye2-off"
-                      onClick={handleVisibilityPass2}
-                    />
-                    <img
-                      className="size-6 top-[53px] right-2 absolute z-10"
-                      src="/assets/icons/pass-visible-on.svg"
-                      alt="pass invisible"
-                      id="eye2-on"
-                      onClick={handleVisibilityPass2}
-                    />
-                    {state?.errors?.confirm && <p className="flex items-center gap-2 text-xs text-red-500">
-                      <CgDanger />{state.errors.confirm}</p>}
+                    <div className="absolute top-3 right-3">
+                      <span
+                        className={`cursor-pointer ${
+                          showConfirm ? "hidden" : ""
+                        }`}
+                        id="eye2-off"
+                        onClick={() => setShowConfirm(true)}
+                      >
+                        👁️
+                      </span>
+                      <span
+                        className={`cursor-pointer ${
+                          showConfirm ? "" : "hidden"
+                        }`}
+                        id="eye2-on"
+                        onClick={() => setShowConfirm(false)}
+                      >
+                        👁️
+                      </span>
+                    </div>
                   </div>
                 </div>
-                <span className="font-normal text-[18px] text-colorPrimary" style={{
-                  textShadow: "2px 2px 5px rgba(0, 0, 0, 0.5)",
-                }}>
-                  Configurar Autenticación de 2 Pasos
-                </span>
               </div>
-              <div className="flex justify-center">
-                <Link
-                  to={'/inversor/dashboard/'}
-                  className="bg-colorFourth px-3 py-2 cursor-pointer rounded-md font-semibold text-colorPrimary "
-                >
-                  CONTINUAR
-                </Link>
-              </div>
+              <button type="submit" className="w-full py-2 mt-8 bg-colorFourth text-white rounded-lg">
+                Crear cuenta
+              </button>
             </form>
-            <span className="font-normal text-base  text-colorPrimary mt-2">
-              Ya tienes una cuenta?{" "}
-              <Link to="/login" className="font-bold hover:text-gray-200" style={{
-                textShadow: "2px 2px 5px rgba(0, 0, 0, 0.5)",
-              }}>
-                Inicia sesión
-              </Link>
-            </span>
           </div>
-        </div>{" "}
+        </div>
       </div>
     </div>
   );
-
-
 }
