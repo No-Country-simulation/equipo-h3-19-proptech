@@ -3,12 +3,13 @@ import Logo from "@ui/Logo";
 import Navbar from "@ui/CustomerNavbar";
 import Sidebar from "./dashboard/Sidebar";
 import { useEffect, useState } from "react";
-import {  useSelector} from "react-redux";
+import { useSelector } from "react-redux";
 
 import { getUserById } from "../../../services/user.js";
 
 export default function Main() {
 
+  // eslint-disable-next-line no-unused-vars
   const [userData, setUserdata] = useState('')
   const user = useSelector((state) => state.user);
 
@@ -17,7 +18,7 @@ export default function Main() {
       try {
         const userId = user.id;
         if (userId) {
-          const response = await getUserById(userId); 
+          const response = await getUserById(userId);
           setUserdata(response)
         }
       } catch (error) {
@@ -29,13 +30,13 @@ export default function Main() {
   }, [user]); // Se ejecuta cada vez que `user` cambie
 
   return (
-    <div className="grid grid-cols-4 gap-x-2 mx-2 bg-[#fafafa]">
+    <main className="grid grid-cols-4 gap-x-2 mx-2 bg-[#fafafa]">
       <Logo />
-      <Navbar user={{src: "/assets/user.svg", role: "inversor"}} />
+      <Navbar user={{ src: "/assets/user.svg", role: "inversor" }} />
       <Sidebar />
-      <div className="col-span-3">
-        <Outlet  />
-      </div>
-    </div>
+      <section className="col-span-3">
+        <Outlet />
+      </section>
+    </main>
   )
 }
