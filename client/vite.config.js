@@ -16,8 +16,8 @@ export default defineConfig({
         replacement: fileURLToPath(new URL('./src/components/customers/inversor', import.meta.url))
       },
       {
-        find: '@beneficiary',
-        replacement: fileURLToPath(new URL('./src/components/customers/beneficiary', import.meta.url))
+        find: '@borrower',
+        replacement: fileURLToPath(new URL('./src/components/customers/borrower', import.meta.url))
       },
     ]
   }

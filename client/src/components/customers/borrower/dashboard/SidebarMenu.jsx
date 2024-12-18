@@ -18,7 +18,7 @@ export default function SidebarMenu({ target, label, icon, arrow, submenu, activ
         onClick={() => handler(icon)}
       >
         <Link
-          to={`/beneficiary/dashboard/${target}`}
+          to={`/borrower/dashboard/${target}`}
           className="h-6 flex flex-row gap-2 items-center cursor-pointer">
           <img src={`/assets/icons/${icon}-icon.svg`} alt={label} />
           <span className="font-medium text-sm text-white">
@@ -34,7 +34,7 @@ export default function SidebarMenu({ target, label, icon, arrow, submenu, activ
 
           return (
             <Link
-              to={`/beneficiary/dashboard/${target}`} key={label}
+              to={`/borrower/dashboard/${target}`} key={label}
               className={submenuClass}
             >
               {label}

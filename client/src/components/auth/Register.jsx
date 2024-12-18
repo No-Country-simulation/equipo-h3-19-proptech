@@ -306,20 +306,20 @@ export default function Temp() {
                             Inversor
                           </label>
                           <label
-                            htmlFor="role_beneficiario"
+                            htmlFor="role_prestatario"
                             style={{
                               textShadow: "2px 2px 5px rgba(0, 0, 0, 0.5)",
                             }}
                           >
                             <input
                               type="radio"
-                              id="role_beneficiario"
+                              id="role_prestatario"
                               name="role"
-                              value="solicitanteCredito"
-                              checked={data.rol === "solicitanteCredito"}
-                              onChange={() => handleRoleChange("solicitanteCredito")}
+                              value="prestatario"
+                              checked={data.rol === "prestatario"}
+                              onChange={() => handleRoleChange("borrower")}
                             />
-                            Beneficiario
+                            Prestatario
                           </label>
                         </div>
                       </div>
