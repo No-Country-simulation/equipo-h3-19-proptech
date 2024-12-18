@@ -8,8 +8,8 @@ import { investmentshistory } from "./data"
 export default function HistoryTable() {
 
   return (
-    <div className="w-full flex flex-col bg-white drop-shadow-[0_4px_4px_rgba(0,0,0,0.25)] gap-5 p-5 overflow-auto">
-      <div className="flex flex-row self-end gap-5">
+    <section className="w-full flex flex-col bg-white drop-shadow-[0_4px_4px_rgba(0,0,0,0.25)] gap-5 p-5 overflow-auto">
+      <header className="flex flex-row self-end gap-5">
         <button className="w-auto] h-[31px] flex flex-row gap-2 border border-gray-300 rounded px-3 py-2 items-center hover:border-[#154C6C]">
           <span className="font-normal text-[15px] leading-[25.143999099731445px] text-center text-black">Ordenar </span>
           <img src={`/assets/icons/sorting-icon.svg`} alt='icono de ordenar' />
@@ -18,7 +18,7 @@ export default function HistoryTable() {
           <span className="font-normal text-[15px] leading-[25.143999099731445px] text-center text-black">Filtrar </span>
           <img src={`/assets/icons/filter-icon.svg`} alt='icono de ordenar' />
         </button>
-      </div>
+      </header>
       <Table>
         {/* CABECERA DE LA TABLA */}
         <THrow>
@@ -69,6 +69,6 @@ export default function HistoryTable() {
           //# endregion
         }
       </Table>
-    </div>
+    </section>
   )
 }

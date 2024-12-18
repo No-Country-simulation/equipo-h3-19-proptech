@@ -1,18 +1,18 @@
-import SidebarMenu from "./SidebarMenu"
+import SidebarMenu from "@ui/SidebarMenu"
 import { useEffect, useState } from 'react';
 
 export default function Sidebar() {
 
   const initialState = {
-    investments: false,
-    transactions: false,
+    "investments-analysis": false,
+    "transactions-recent": false,
     account: false,
     settings: false,
   }
   const [activeStates, setActiveStates] = useState(initialState);
-  const [current, setcurrent ] = useState('')
+  const [current, setcurrent] = useState('')
 
-  useEffect(()=> {
+  useEffect(() => {
     setcurrent(location.href.split('/').pop())
   }, [])
 
@@ -26,35 +26,48 @@ export default function Sidebar() {
   const completed = 6
 
   return (
-    <div className="h-[calc(100dvh-56px)] flex flex-col items-center justify-start bg-darker-blue text-our-white p-5 rounded-t-2xl overflow-auto scroll-hidden">
-      {/*  PROGRESS */}
-      <div className="w-full h-auto flex flex-col gap-4 px-12" id="progress">
+    <main className="h-[calc(100dvh-56px)] flex flex-col items-center justify-start bg-darker-blue text-our-white p-5 rounded-t-2xl overflow-auto scroll-hidden">
+      {/*  
+      //#region  PROGRESS 
+      */}
+      <header className="w-full h-auto flex flex-col gap-4 px-12" id="progress">
         <span className="font-normal text-[12px] text-our-white">Configura tu Panel de control</span>
-        <div className="w-[175px] h-2 bg-white pl-9 rounded-[100px] relative">
-          <div className="h-2 rounded-[59px] bg-[#1890ff] left-0 absolute" style={{ width: 25 * completed + 'px' }} />
+        <div className="w-[175px] h-2 bg-white pl-9 rounded-3xl relative">
+          <div className="h-2 rounded-3xl bg-[#1890ff] left-0 absolute" style={{ width: 25 * completed + 'px' }} />
         </div>
         <span className="font-normal text-[11px] text-our-white">{completed}/7 Completados</span>
-      </div>
-      {/* PROGRESS */}
+      </header>
+      {/* 
+      //# endregion
+      */}
 
       {/* TOP MENU */}
-      <div className="flex flex-col w-full p-5 gap-2">
+      {/* 
+      //#region HOME LINK 
+      */}
+      <section className="flex flex-col w-full p-5 gap-2">
         <SidebarMenu
           label={'Panel de control'}
           icon={'home'}
-          target={'dashboard/'}
+          target={''}
           arrow={false}
           handler={handleClick}
           current={current}
+          userRole={'inversor'}
         />
+        {/*
+        //# endregion
+        //#region INVERSONES
+        */}
         <SidebarMenu
           key={'investments'}
           label={'Mis Inversiones'}
           icon={'income'}
-          target={'investments'}
+          target={'investments-analysis'}
           arrow={true}
-          active={activeStates.investments}
+          active={activeStates["investments-analysis"]}
           current={current}
+          userRole={'inversor'}
           submenu={[
             {
               label: 'Portafolio',
@@ -79,14 +92,19 @@ export default function Sidebar() {
           ]}
           handler={handleClick}
         />
+        {/*
+        //# endregion
+        //#region TRANSACCIONES
+        */}
         <SidebarMenu
           label={'Transacciones'}
           icon={'transactions'}
           key={'transactions'}
-          target={'transactions'}
+          target={'transactions-recent'}
           arrow={true}
-          active={activeStates.transactions}
+          active={activeStates['transactions-recent']}
           current={current}
+          userRole={'inversor'}
           submenu={[
             {
               label: 'Transacciones recientes',
@@ -107,35 +125,50 @@ export default function Sidebar() {
           ]}
           handler={handleClick}
         />
-      </div>
-      {/* TOP MENU */}
+      </section>
+      {/*
+        //# endregion
+      */}
+      {/* FIN TOP MENU */}
 
       <div className="w-full h-[1px] bg-our-white" />  {/* SEPARADOR */}
 
       {/* BOTTOM MENU */}
-      <div className="flex flex-col w-full p-5 gap-2">
+      {/*
+        //#region CUENTA
+      */}
+      <section className="flex flex-col w-full p-5 gap-2">
         <SidebarMenu
           label={'Mi cuenta'}
           icon={'account'}
           key={'account'}
-          target={'dashboard/#'}
+          target={''}
           arrow={false}
           active={activeStates.account}
           handler={handleClick}
           current={current}
+          userRole={'inversor'}
         />
+        {/*
+        //# endregion
+        //#region PERFIL
+        */}
         <SidebarMenu
           label={'Configuración'}
           icon={'settings'}
           key={'settings'}
-          target={'dashboard/#'}
+          target={'profile'}
           arrow={false}
           active={activeStates.settings}
           handler={handleClick}
           current={current}
+          userRole={'inversor'}
         />
-      </div>
-      {/* BOTTOM MENU */}
-    </div>
+        {/*
+        //# endregion
+        */}
+      </section>
+      {/* FIN BOTTOM MENU */}
+    </main>
   )
 }

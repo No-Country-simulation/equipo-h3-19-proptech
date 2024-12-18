@@ -11,13 +11,13 @@ export default function SidebarMenu({ target, label, icon, arrow, submenu, activ
 
   return (
     <>
-      <div
+      <article
         to={'#'}
         className={linkClass}
         onClick={() => handler(target)}
       >
         <Link
-          to={ target === 'dashboard/' ? target : '#'}
+          to={`/${userRole}/dashboard/${target}`}
           className="h-6 flex flex-row gap-2 items-center cursor-pointer">
           <img src={`/assets/icons/${icon}-icon.svg`} alt={label} />
           <span className="font-medium text-sm text-white">
@@ -25,12 +25,12 @@ export default function SidebarMenu({ target, label, icon, arrow, submenu, activ
           </span>
         </Link>
         {arrow && <img className={active ? "rotate-180" : ""} src="/assets/icons/arrow-down-white.svg" alt="home" />}
-      </div>
+      </article>
       {
         active && submenu?.length > 0 && submenu.map(({ label, target }) => {
           console.log(current === target.split('/').pop());
           const back = current !== target.split('/').pop() ? '' : ' bg-[#fafafa33]'
-          let submenuClass = `w-full pl-11 ${back}`
+          let submenuClass = `w-full pl-11 rounded-md ${back}`
           
           return (
             <Link
