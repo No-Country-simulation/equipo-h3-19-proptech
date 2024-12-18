@@ -1,7 +1,7 @@
-export default function BeneficiaryDashboard () {
+export default function BorrowerDashboard () {
   return (
     <div>
-      component beneficiarydashboard
+      component borrowerdashboard
     </div>
   )
 }

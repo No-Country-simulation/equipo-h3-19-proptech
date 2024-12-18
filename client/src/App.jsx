@@ -25,14 +25,14 @@ import InversorDashboardHome from "@inversor/dashboard/Home"
 import AnalysisStatistics from "@inversor/dashboard/investments/AnalysisStatistics"
 import InversorProfile from "@inversor/dashboard/profile/Profile"
 
-import Beneficiary from "./views/customers/Beneficiary"
-import BeneficiaryDashboard from "@beneficiary/Main"
-import BeneficiaryDashboardHome from "@beneficiary/dashboard/Home"
-import LoansHistory from "@beneficiary/dashboard/loans/Loans"
-import LoansSimulator from "@beneficiary/dashboard/loans/Simulator"
-import BeneficiaryRecentTransactions from "@beneficiary/dashboard/transactions/Recent/Recent"
-import BeneficiaryProfile from "@beneficiary/dashboard/profile/Profile"
-import BeneficiaryAccount from "@beneficiary/dashboard/account/Account"
+import Borrower from "./views/customers/Borrower"
+import BorrowerDashboard from "@borrower/Main"
+import BorrowerDashboardHome from "@borrower/dashboard/Home"
+import LoansHistory from "@borrower/dashboard/loans/Loans"
+import LoansSimulator from "@borrower/dashboard/loans/Simulator"
+import BorrowerRecentTransactions from "@borrower/dashboard/transactions/Recent/Recent"
+import BorrowerProfile from "@borrower/dashboard/profile/Profile"
+import BorrowerAccount from "@borrower/dashboard/account/Account"
 
 import Plotowner from "./views/customers/Plotowner"
 import PlotOwnerDashboard from "./components/customers/PlotOwnerDashboard"
@@ -138,40 +138,40 @@ const router = createBrowserRouter([
     //# endregion 
   },
   {
-    //#region BENEFICIARY
-    path: '/beneficiary',
+    //#region PRESTATARIO
+    path: '/borrower',
     element: (
 
-      <Beneficiary />
+      <Borrower />
 
     ),
     children: [
       {
-        element: <BeneficiaryDashboard />,
+        element: <BorrowerDashboard />,
         children: [
           {
-            path: '/beneficiary/dashboard',
-            element: <BeneficiaryDashboardHome />
+            path: '/borrower/dashboard',
+            element: <BorrowerDashboardHome />
           },
           {
-            path: '/beneficiary/dashboard/loans-history',
+            path: '/borrower/dashboard/loans-history',
             element: <LoansHistory />
           },
           {
-            path: '/beneficiary/dashboard/loans-simulator',
+            path: '/borrower/dashboard/loans-simulator',
             element: <LoansSimulator />
           },
           {
-            path: '/beneficiary/dashboard/transactions-recent',
-            element: <BeneficiaryRecentTransactions />
+            path: '/borrower/dashboard/transactions-recent',
+            element: <BorrowerRecentTransactions />
           },
           {
-            path: '/beneficiary/dashboard/account',
-            element: <BeneficiaryAccount />
+            path: '/borrower/dashboard/account',
+            element: <BorrowerAccount />
           },
           {
-            path: '/beneficiary/dashboard/profile',
-            element: <BeneficiaryProfile />
+            path: '/borrower/dashboard/profile',
+            element: <BorrowerProfile />
           }
         ]
       }
