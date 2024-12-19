@@ -10,7 +10,7 @@ export default {
       fontFamily: {
         'serif': ['ui-serif', 'Georgia'],
       },
-      backgroundImage : {
+      backgroundImage: {
         'custom-gradient': 'linear-gradient(to top right, #123953 0%, #206591 17%, #236E9F 71%, #123953 100%)',
         'custom-gradient-1': 'linear-gradient(to top right, #fff 0%, #64B742 17%, #6af036 71%, #fff 100%)',
         'custom-gradient-2': 'linear-gradient(to top right, #236E9F 0%, #2675A8 8%, #226089 89%, #1F5578 100%)',
@@ -25,14 +25,7 @@ export default {
         colorFourth: 'var(--color-fourth)',
         colorFithy: 'var(--color-fithy)',
 
-        colorTrasparent: 'var(--color-primaryTransparent)',
-
-        "our-white": 'var(--our-white)',
-        "our-green": 'var(--our-green)',
-        "primary": 'var(--our-blue)',
-        "darker-blue": 'var(--our-darker-blue)',
-        "our-red": 'var(--our-red)',
-
+        colorTrasparent: 'var(--color-primaryTransparent)'
       },
     },
     fontFamily: {

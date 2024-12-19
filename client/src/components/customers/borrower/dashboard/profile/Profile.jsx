@@ -58,9 +58,9 @@ export default function Profile() {
                 </PrimaryButton>
                 <button
                   onClick={() => handleDocCancel('editMode')}
-                  className="h-[33px] w-fit flex items-center bg-white rounded-md px-4 py-2 border border-[#2980b9]
+                  className="h-[33px] w-fit flex items-center bg-white rounded-md px-4 py-2 border border-colorTerciary
                  ">
-                  <span className="font-medium text-[16px] leading-[20px] text-center text-[#2980b9]">
+                  <span className="font-medium text-[16px] leading-[20px] text-center text-colorTerciary">
                     Cancelar
                   </span>
                 </button>
@@ -68,7 +68,7 @@ export default function Profile() {
               :
               <button
                 onClick={() => handleDocUploaded('editMode')}
-                className="font-bold text-[16px] leading-[25.143999099731445px] text-right underline text-[#2980b9] outline-none border-none"
+                className="font-bold text-[16px] leading-[25.143999099731445px] text-right underline text-colorTerciary outline-none border-none"
               >
                 Editar
               </button>
@@ -132,7 +132,7 @@ export default function Profile() {
                 >
                   Adjuntar DNI
                 </PrimaryButton>
-                {/* <button className="font-bold text-[16px] leading-[25.143999099731445px] underline text-[#2980b9]">
+                {/* <button className="font-bold text-[16px] leading-[25.143999099731445px] underline text-colorTerciary">
                   Ver ejemplo
                 </button> */}
               </div>
