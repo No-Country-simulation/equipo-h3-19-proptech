@@ -57,7 +57,7 @@ export default function Navbar({ user }) {
   }
 
   return (
-    <div className="flex items-center justify-between h-14 col-span-3 bg-darker-blue text-white rounded-2xl px-6">
+    <div className="flex items-center justify-between h-14 col-span-3 bg-colorSecondary text-white rounded-2xl px-6">
       <div className="flex  gap-5">
         <button className="flex flex-row gap-1 relative" onClick={showCalendar}>
           <span className="font-normal text-[15px] text-[#faf9f6]">Calendario</span>
@@ -121,15 +121,15 @@ export default function Navbar({ user }) {
             </span>
             <div className="flex flex-row gap-6">
               <button
-                className="flex justify-center items-center gap-[5.267080783843994px] self-stretch grow px-[15.80124282836914px] py-[6.583850860595703px] border border-[#2980b9] rounded-md"
+                className="flex justify-center items-center gap-[5.267080783843994px] self-stretch grow px-[15.80124282836914px] py-[6.583850860595703px] border border-colorTerciary rounded-md"
                 onClick={handleClickCloseButton}
               >
-                <span className="font-medium text-[16px] leading-[20px] text-center text-[#2980b9]">
+                <span className="font-medium text-[16px] leading-[20px] text-center text-colorTerciary">
                   Cancelar
                 </span>
               </button>
               <button
-                className="flex justify-center items-center gap-[5.267080783843994px] self-stretch grow px-[15.80124282836914px] py-[6.583850860595703px] bg-[#64B742] rounded-md"
+                className="flex justify-center items-center gap-[5.267080783843994px] self-stretch grow px-[15.80124282836914px] py-[6.583850860595703px] bg-colorFourth rounded-md"
                 onClick={handleLogout}
               >
                 <span className="font-medium text-[16px] leading-[20px] text-center text-white">

@@ -9,7 +9,7 @@ export default function Home() {
         <span className="font-normal text-[32px] text-black font-serif">Hola Juana</span>
         <Link
           to="#"
-          className="px-[15.80124282836914px] py-[6.583850860595703px] font-medium text-[16px] leading-[20px] text-center bg-[#64B742] text-white rounded-md"
+          className="px-[15.80124282836914px] py-[6.583850860595703px] font-medium text-[16px] leading-[20px] text-center bg-colorFourth text-white rounded-md"
         >
           Configura tu panel
         </Link>

@@ -10,11 +10,11 @@ export default function RecentTable() {
   return (
     <div className="w-full flex flex-col gap-5 p-5">
       <div className="flex flex-row self-end gap-5">
-        <button className="w-auto] h-[31px] flex flex-row gap-2 border border-gray-300 rounded px-3 py-2 items-center hover:border-[#154C6C]">
+        <button className="w-auto] h-[31px] flex flex-row gap-2 border border-gray-300 rounded px-3 py-2 items-center hover:border-colorSecondary">
           <span className="font-normal text-[15px] leading-[25.143999099731445px] text-center text-black">Ordenar </span>
           <img src={'/assets/icons/sorting-icon.svg'} alt='icono de ordenar' />
         </button>
-        <button className="w-auto] h-[31px] flex flex-row gap-2 border border-gray-300 rounded px-3 py-2 items-center hover:border-[#154C6C]">
+        <button className="w-auto] h-[31px] flex flex-row gap-2 border border-gray-300 rounded px-3 py-2 items-center hover:border-colorSecondary">
           <span className="font-normal text-[15px] leading-[25.143999099731445px] text-center text-black">Filtrar </span>
           <img src={'/assets/icons/filter-icon.svg'} alt='icono de ordenar' />
         </button>

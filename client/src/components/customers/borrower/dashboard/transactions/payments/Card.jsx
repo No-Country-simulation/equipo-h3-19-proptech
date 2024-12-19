@@ -11,7 +11,7 @@ export default function Card({title, subtitle, label}) {
         {subtitle}
       </span>
 
-      <button className="w-fit px-4 py-2 font-medium text-[16px] leading-[20px] text-center text-white bg-[#64B742] rounded-lg">
+      <button className="w-fit px-4 py-2 font-medium text-[16px] leading-[20px] text-center text-white bg-colorFourth rounded-lg">
           {label}
       </button>
     </div>

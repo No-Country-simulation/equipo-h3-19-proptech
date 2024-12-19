@@ -10,7 +10,7 @@ export default function Account() {
         <aside className="w-full flex flex-row justify-around">
           <article className="flex flex-col items-center gap-4">
             <img src="/assets/temp/credit-card.svg" alt="credit card" />
-            <span className="font-bold text-[16px] leading-[20px] text-center underline text-[#2980b9]">Ver datos de la tarjeta</span>
+            <span className="font-bold text-[16px] leading-[20px] text-center underline text-colorTerciary">Ver datos de la tarjeta</span>
           </article>
 
           <article className="flex flex-col items-start gap-4">
@@ -44,7 +44,7 @@ export default function Account() {
           <article className="flex flex-col self-stretch items-start justify-end gap-4">
             <span className="text-[12px] leading-[20px] flex gap-2 items-baseline">
               Forma de pago establecida. Utilizaremos esta forma de pago para abonar los préstamos solicitados.
-              <span className="font-bold text-[16px] leading-[20px] text-center underline text-[#2980b9] cursor-pointer">
+              <span className="font-bold text-[16px] leading-[20px] text-center underline text-colorTerciary cursor-pointer">
                 Más información.
               </span>
             </span>
@@ -75,7 +75,7 @@ export default function Account() {
             </div>
           </article>
           <article className="flex flex-col gap-5 justify-start">
-            <div className="flex flex-row w-[448px] h-32 border border-[#2980b9] rounded-lg justify-around items-center">
+            <div className="flex flex-row w-[448px] h-32 border border-colorTerciary rounded-lg justify-around items-center">
               <div className="flex flex-col">
                 <span className="font-normal text-sm leading-[25px] text-black">Titularidad de la cuenta</span>
                 <span className="font-medium text-[16px] <leading-[25px] text-black">Juana López</span>
@@ -88,7 +88,7 @@ export default function Account() {
                 </div>
               </div>
             </div>
-            <span className="font-bold text-[16px] leading-[20px] text-start underline text-[#2980b9]">Detalles de la cuenta</span>
+            <span className="font-bold text-[16px] leading-[20px] text-start underline text-colorTerciary">Detalles de la cuenta</span>
           </article>
         </aside>
 
@@ -96,7 +96,7 @@ export default function Account() {
           <article className="flex flex-col self-stretch items-start justify-end gap-4">
             <span className="text-[12px] leading-[20px] flex gap-2 items-baseline">
               Forma de pago establecida. Utilizaremos esta forma de pago para abonar los préstamos solicitados.
-              <span className="font-bold text-[16px] leading-[20px] text-center underline text-[#2980b9] cursor-pointer">
+              <span className="font-bold text-[16px] leading-[20px] text-center underline text-colorTerciary cursor-pointer">
                 Más información.
               </span>
             </span>

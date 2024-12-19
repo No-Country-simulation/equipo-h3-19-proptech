@@ -21,14 +21,14 @@ export default function Sidebar() {
   const completed = 6
 
   return (
-    <div className="h-[calc(100dvh-56px)] flex flex-col items-center justify-start bg-darker-blue text-our-white p-5 rounded-t-2xl overflow-auto scroll-hidden">
+    <div className="h-[calc(100dvh-56px)] flex flex-col items-center justify-start bg-colorSecondary text-colorPrimary p-5 rounded-t-2xl overflow-auto scroll-hidden">
       {/*  PROGRESS */}
       <div className="w-full h-auto flex flex-col gap-4 px-12" id="progress">
-        <span className="font-normal text-[12px] text-our-white">Configura tu Panel de control</span>
+        <span className="font-normal text-[12px] text-colorPrimary">Configura tu Panel de control</span>
         <div className="w-[175px] h-2 bg-white pl-9 rounded-[100px] relative">
           <div className="h-2 rounded-[59px] bg-[#1890ff] left-0 absolute" style={{ width: 25 * completed + 'px' }} />
         </div>
-        <span className="font-normal text-[11px] text-our-white">{completed}/7 Completados</span>
+        <span className="font-normal text-[11px] text-colorPrimary">{completed}/7 Completados</span>
       </div>
       {/* PROGRESS */}
 
@@ -77,7 +77,7 @@ export default function Sidebar() {
       </div>
       {/* TOP MENU */}
 
-      <div className="w-full h-[1px] bg-our-white" />  {/* SEPARADOR */}
+      <div className="w-full h-[1px] bg-colorPrimary" />  {/* SEPARADOR */}
 
       {/* BOTTOM MENU */}
       <div className="flex flex-col w-full p-5 gap-2">

@@ -9,7 +9,7 @@ export default function Home() {
         <h1 className="font-normal text-[32px] text-black font-serif">Hola </h1>
         <Link
           to="#"
-          className="px-4 py-2 font-medium text-base leading-5 text-center bg-[#64B742] text-white rounded-md"
+          className="px-4 py-2 font-medium text-base leading-5 text-center bg-colorFourth text-white rounded-md"
         >
           Configura tu panel
         </Link>
@@ -38,8 +38,8 @@ export default function Home() {
             </header>
 
             <article className="w-full flex flex-row pl-20 pr-10 py-10 gap-7">
-              <div className="w-[171px] h-28 flex flex-col items-center justify-center border border-[#2980B9] gap-4">
-                <span className="font-bold text-[32px] leading-[25.143999099731445px] text-right text-[#2980b9]">2.020.000</span>
+              <div className="w-[171px] h-28 flex flex-col items-center justify-center border border-colorTerciary gap-4">
+                <span className="font-bold text-[32px] leading-[25.143999099731445px] text-right text-colorTerciary">2.020.000</span>
                 <div className="flex flex-col gap-1">
                   <span className="font-normal text-[14px] leading-[18px] text-center text-black">
                     Monto total recibido
@@ -49,8 +49,8 @@ export default function Home() {
                   </span>
                 </div>
               </div>
-              <div className="w-[171px] h-28 flex flex-col items-center justify-center border border-[#2980B9] gap-4">
-                <span className="font-bold text-[32px] leading-[25.143999099731445px] text-right text-[#2980b9]">9</span>
+              <div className="w-[171px] h-28 flex flex-col items-center justify-center border border-colorTerciary gap-4">
+                <span className="font-bold text-[32px] leading-[25.143999099731445px] text-right text-colorTerciary">9</span>
                 <div className="flex flex-col gap-1">
                   <span className="font-normal text-[14px] leading-[18px] text-center text-black">
                     Cuotas faltantes
