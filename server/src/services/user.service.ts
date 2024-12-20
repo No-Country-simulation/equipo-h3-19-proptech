@@ -1,75 +1,69 @@
-import prisma from '../lib/database';
-import { hashSync, compareSync } from 'bcryptjs'
-import { User } from '@prisma/client';
+import prisma from "../lib/database";
+import { hashSync, compareSync } from "bcryptjs";
+import { User } from "@prisma/client";
 
 //#region OBTENER LISTA
 export const getAllUsers = async () => {
   try {
     const users = await prisma.user.findMany();
-    if (!users) return [{ message: 'Error obteniendo usuarios' }]
-    const usersList = users.map(user => {
-      const { password, ...others } = user
-      return others
-    })
-    return [null, usersList]
+    if (!users) return [{ message: "Error obteniendo usuarios" }];
+    const usersList = users.map((user) => {
+      const { password, ...others } = user;
+      return others;
+    });
+    return [null, usersList];
   } catch (error) {
-    return [error]
+    return [error];
   }
 };
 //# endregion
 
 //#region CREAR USUARIO
-export const createUser = async (data: User) => {
-  try {
-    data.password = hashSync(data.password, 10)
-    const newUser = await prisma.user.create({
-      data
-    });
-    if (!newUser) {
-      return [{ error: 'Error creando usuario' }]
-    }
-    const { password, ...user } = newUser
-    return [null, user, user.id, user.email]
-  } catch (error) {
-    return [{ error: 'Error creando usuario' }]
-  }
+export const createUser = async (userdata: User) => {
+  const passwordhashed = hashSync(userdata.password, 10);
+  const data = {...userdata, password: passwordhashed}
+  const newUser = await prisma.user.create({
+    data,
+  });
+  const { password, ...user } = newUser;
+  return user;
 };
 //# endregion
 
 //#region OBTENER USUARIO
-export const getUser = async (data: { email: string, password: string }) => {
+export const getUser = async (data: { email: string; password: string }) => {
   try {
     console.log(data);
     const retrievedUser = await prisma.user.findFirst({
-      where: { email: data.email }
-    })
+      where: { email: data.email },
+    });
     if (!retrievedUser) {
-      return [{ error: 'Usuario no existe' }]
+      return [{ error: "Usuario no existe" }];
     }
-    const { password, ...user } = retrievedUser
-    return [null, user, password, user.id, user.email]
+    const { password, ...user } = retrievedUser;
+    return [null, user, password, user.id, user.email];
   } catch (error) {
-    return [{ error: 'Error obteniendo usuario' }]
+    return [{ error: "Error obteniendo usuario" }];
   }
-}
+};
 //# endregion
 
 //#region MODIF USUARIO
 export const updateUser = async (id: string, data: User) => {
   try {
     const retrievedUser = await prisma.user.findFirst({
-      where: { id }
-    })
-    if (!retrievedUser) return [{ error: 'Usuario no existe' }];
+      where: { id },
+    });
+    if (!retrievedUser) return [{ error: "Usuario no existe" }];
 
     const updatedUser = await prisma.user.update({
       where: { id },
-      data
+      data,
     });
-    const { password, ...user } = updatedUser
-    return [null, user]
+    const { password, ...user } = updatedUser;
+    return [null, user];
   } catch (error) {
-    return [{ error: 'Error actualizando usuario' }]
+    return [{ error: "Error actualizando usuario" }];
   }
 };
 //# endregion
@@ -78,19 +72,17 @@ export const updateUser = async (id: string, data: User) => {
 export const deleteUser = async (id: string) => {
   try {
     const retrievedUser = await prisma.user.findFirst({
-      where: { id }
-    })
-    if (!retrievedUser) return [{ error: 'Usuario no existe' }];
+      where: { id },
+    });
+    if (!retrievedUser) return [{ error: "Usuario no existe" }];
 
-    await prisma.user.update(
-      {
-        where: { id },
-        data: { isDeleted: true }
-      }
-    );
-    return null
+    await prisma.user.update({
+      where: { id },
+      data: { isDeleted: true },
+    });
+    return null;
   } catch (error) {
-    return { error: 'No se pudo eliminar usuario' }
+    return { error: "No se pudo eliminar usuario" };
   }
 };
 //# endregion

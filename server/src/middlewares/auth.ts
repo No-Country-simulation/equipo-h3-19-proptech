@@ -1,18 +1,16 @@
 import { Request, Response, NextFunction } from 'express';
 import { jwtDecode }  from 'jwt-decode'
 
-export function isAuthenticated(req: Request, res: Response, next: NextFunction): void {
+export function isAuthenticated(req: Request) {
   let token = req.headers["credential"];
-  if (!token && !token?.slice(1)) {
-    res.status(401).json({ message: 'No autorizado.' });
-  } 
+  
   try {
       const tkn = token?.slice(1) as string
       const decoded = jwtDecode(tkn)
       console.log(decoded);
-      next()
+      
     } catch (error) {
-      res.status(401).json({ message: 'No autorizado.' });
+      console.error({ message: 'No autorizado.' });
     }
 }
 
