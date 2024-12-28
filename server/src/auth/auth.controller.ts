@@ -1,8 +1,8 @@
-import { sign } from "jsonwebtoken";
 import { NextFunction, Request, Response } from "express";
-import { createUser, getUser } from "../services/user.service";
 import { compareSync } from "bcryptjs";
-import { createSession } from "../services/session.service";
+import { sign } from "jsonwebtoken";
+import { createSession } from "./session.service";
+import { createUser, getUser } from "../user/user.service";
 
 const SECRET = process.env.SECRET as string;
 
@@ -30,18 +30,18 @@ export async function signinHandler(
     const { data } = req.body;
     const [error, userFound, password, id, email] = await getUser(data);
     if (error || !userFound)
-      return res.status(400).json({ message: "User Not Found" });
+      return res.status(400).json({ message: "Usuario no encontrado" });
     const matchPassword = compareSync(data.password, `${password}`);
     console.log({ matchPassword });
 
     if (!matchPassword)
       return res.status(401).json({
         token: null,
-        message: "Invalid Password",
+        message: "Password inválido",
       });
     const token = sign({ id, email }, SECRET, { expiresIn: "1h" });
     return res.status(200).json({ user: userFound });
   } catch (error) {
-    return next(error);
+    return res.status(500).json({ token: null, message: "Error ingresando" });
   }
 }

@@ -1,5 +1,5 @@
 import prisma from "../lib/database";
-import { hashSync, compareSync } from "bcryptjs";
+import { hashSync } from "bcryptjs";
 import { User } from "@prisma/client";
 
 //#region OBTENER LISTA
@@ -33,7 +33,6 @@ export const createUser = async (userdata: User) => {
 //#region OBTENER USUARIO
 export const getUser = async (data: { email: string; password: string }) => {
   try {
-    console.log(data);
     const retrievedUser = await prisma.user.findFirst({
       where: { email: data.email },
     });

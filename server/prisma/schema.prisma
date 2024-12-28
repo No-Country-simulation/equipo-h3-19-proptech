@@ -19,10 +19,8 @@ model User {
   lastName  String
   country   String
   email     String    @unique
-  prefix    Int
   phone     Int
   role      Role      @default(inversor)
-  sessions  Session[]
   password  String
   isDeleted Boolean   @default(false)
 }
@@ -41,7 +39,4 @@ model Session {
   userId    String   @db.ObjectId
   createdAt DateTime @default(now())
   expiresAt DateTime
-
-  user User @relation(fields: [userId], references: [id])
-  @@index([userId])
 }

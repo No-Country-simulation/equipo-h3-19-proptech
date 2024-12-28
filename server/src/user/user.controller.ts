@@ -5,7 +5,7 @@ import {
   getUser,
   updateUser,
   deleteUser,
-} from "../services/user.service";
+} from "./user.service";
 
 //#region OBTENER LISTA
 export const getUsers = async (

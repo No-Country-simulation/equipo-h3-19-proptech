@@ -1,12 +1,22 @@
 import express, { Application } from 'express';
 import routes from './routes';
 import cors  from 'cors'
-// import { isAuthenticated } from './middlewares/auth';
+import cookieParser from 'cookie-parser';
 const app: Application = express();
 
-app.use(cors())
+//#region DETECTAR ORIGEN
+const isProduction = process.env.NODE_ENV === 'production';
+const ourFront = process.env.ORIGIN;
+const origin = isProduction ? ourFront : 'http://localhost:5173';
+//#endregion
+
 app.use(express.json());
-// app.use(isAuthenticated)
+app.use(cors({
+  origin,
+  credentials: true
+}))
+
+app.use(cookieParser());
 
 app.use('/api/v1', routes);
 
