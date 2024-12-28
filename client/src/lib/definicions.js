@@ -47,11 +47,5 @@ export const SignInFormSchema = z.object({
     .trim(),
   password: z
     .string()
-    .min(8, { message: 'Debe tener un mínimo de 8 caracteres' })
-    .regex(/[a-zA-Z]/, { message: 'Debe contener al menos 1 letra.' })
-    .regex(/[0-9]/, { message: 'Debe contener al menos 1 numero.' })
-    .regex(/[^a-zA-Z0-9]/, {
-      message: 'Debe contener al menos 1 caracter especial.',
-    })
     .trim(),
 })

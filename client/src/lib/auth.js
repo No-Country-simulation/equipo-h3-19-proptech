@@ -27,8 +27,14 @@ export async function signup(state, formData) {
   }  
 }
 
+
+
+
+
 export async function signin(state, formData) {
   // Validate form fields
+
+
   const validatedFields = SignInFormSchema.safeParse({
     email: formData.get('email'),
     password: formData.get('password'),
@@ -44,5 +50,6 @@ export async function signin(state, formData) {
   // return data to the component
   return {
     data: validatedFields.data
+    
   }  
 }
