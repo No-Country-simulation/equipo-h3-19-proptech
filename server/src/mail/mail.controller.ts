@@ -1,14 +1,14 @@
-import { generateVerificationCode } from "../lib/sms/verification-code.generator";
-import { confirmPhoneNumer } from "./sms.service";
-import { Request, Response } from "express";
 import prisma from '../lib/database'
+import { Request, Response } from "express";
+import { generateVerificationCode } from "../lib/sms/verification-code.generator";
+import { verifyEmail } from './mail.service';
 
 export const sendVerificationCode = async (req: Request, res: Response) => {
   try {
     const { data: { to } } = req.body;
     const verificationCode = generateVerificationCode();
-    const status = await confirmPhoneNumer(to, verificationCode);
-    if (status === 'queued') {
+    const done = await verifyEmail(to, verificationCode);
+    if (done) {
       const expiresAt = new Date(Date.now() + 10 * 60 * 1000);
       const { id } = await prisma.token.create({
         data: {
@@ -20,10 +20,10 @@ export const sendVerificationCode = async (req: Request, res: Response) => {
         return res.json({ message: "Código de verificación enviado", tkn: id });
       }
     }
-    // res.json({ message: "Error enviando código de verificación" });
+    return res.json({message: "Error enviando código de verificación"});
   } catch (error) {
     console.error('Error sending verification code:', error);
-    res.json({ message: "Error enviando código de verificación" });
+    return res.json({message: "Error enviando código de verificación"})
   }
 }
 

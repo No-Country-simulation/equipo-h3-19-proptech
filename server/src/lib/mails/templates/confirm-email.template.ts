@@ -1,4 +1,4 @@
-export const getConfirmEmailTemplate = (token: string) => `
+export const getConfirmEmailTemplate = (token: number) => `
 <!DOCTYPE html>
 <html>
 <head>
@@ -40,11 +40,11 @@ export const getConfirmEmailTemplate = (token: string) => `
             <h1>Confirma tu correo electrónico</h1>
         </div>
         <div class="content">
+            <img src="${__dirname + '/Logo.png'}" alt="Logo" style="display: block; margin: 0 auto;">
             <h2>¡Gracias por registrarte!</h2>
             <p>Para completar tu registro, por favor confirma tu dirección de correo electrónico.</p>
-            <a href="${process.env.CLIENT_URL}/confirm/${token}" class="button">
-                Confirmar Email
-            </a>
+            <p>Ingresa el siguiente código de verificación:</p>
+            <h3>${token}</h3>
             <p>Si no creaste esta cuenta, puedes ignorar este mensaje.</p>
         </div>
     </div>

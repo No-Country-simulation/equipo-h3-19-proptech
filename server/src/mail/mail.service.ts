@@ -16,8 +16,8 @@ export const sendEmail = async (to: string, subject: string, html: string) => {
   }
 };
 
-export const confirmEmail = async (to: string, token: string) => {
-  const subject = 'Confirma tu email';
+export const verifyEmail = async (to: string, token: number) => {
+  const subject = 'Verifica tu correo electrónico';
   const html = getConfirmEmailTemplate(token);
   return sendEmail(to, subject, html);
 }
