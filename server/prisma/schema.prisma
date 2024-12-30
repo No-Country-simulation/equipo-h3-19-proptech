@@ -40,3 +40,9 @@ model Session {
   createdAt DateTime @default(now())
   expiresAt DateTime
 }
+
+model Token {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  token     Int
+  expiresAt DateTime
+}
