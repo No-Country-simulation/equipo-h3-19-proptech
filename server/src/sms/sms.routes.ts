@@ -3,7 +3,7 @@ import { sendVerificationCode, verifyCode } from './sms.controller';
 
 const router = Router();
 
-router.post('/send-code', sendVerificationCode)
-router.post('/verify', verifyCode)
+router.post('/send-verification-code', sendVerificationCode)
+router.post('/verify-code', verifyCode)
 
 export default router;
